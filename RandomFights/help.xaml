@@ -1,0 +1,15 @@
+﻿<Page x:Class="RandomFights.help"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomFights"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="help">
+
+    <Grid>
+        <TextBlock Text="Help:" TextWrapping="Wrap" Foreground="White" Margin="10,10,10,10" Name="TB"/>
+        <Button Content="Home" Margin="0,5,5,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"/>
+    </Grid>
+</Page>

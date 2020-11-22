@@ -1,0 +1,54 @@
+﻿<Page x:Class="RandomFights.settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomFights"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="settings">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"></ColumnDefinition>
+            <ColumnDefinition Width="223*"></ColumnDefinition>
+            <ColumnDefinition Width="33*"></ColumnDefinition>
+            <ColumnDefinition Width="223*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Content="Home" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35" Grid.Column="3" Grid.RowSpan="2"/>
+        <TextBlock Text="Language:" TextWrapping="Wrap" Foreground="White" Margin="0,0,0,32" Name="LangTB" Grid.RowSpan="2"/>
+        <RadioButton Content="Russian" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,8" Foreground="White" x:Name="RB0"/>
+        <RadioButton Content="English" Grid.Column="1" HorizontalAlignment="Left" Margin="74,10,0,8" Foreground="White" x:Name="RB1"/>
+        <Button Content="Save" Margin="0,0,35,0" VerticalAlignment="Top" Height="35" x:Name="saveBtn" HorizontalAlignment="Right" Width="35" Grid.Column="3" Click="saveBtn_Click" Grid.RowSpan="2"/>
+        <TextBlock Text="Delete saves:" TextWrapping="Wrap" Foreground="White" Grid.Row="1" Name="DsTb"/>
+        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,8" Grid.Row="1" Name="DeleteSavesCB" Checked="DeleteSavesCB_Checked"/>
+        <TextBlock Text="Enable saves:" TextWrapping="Wrap" Foreground="White" Grid.Row="1" Margin="0,32,0,0" Name="EsTb" Grid.RowSpan="2"/>
+        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,9" Grid.Row="2" x:Name="EnableSavesCB" Checked="EnableSavesCB_Checked"/>
+
+    </Grid>
+</Page>
