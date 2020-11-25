@@ -21,7 +21,7 @@ namespace RandomFights
     public partial class single : Page
     {
         bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, playerIsDead = false, player0IsPoisoned, player1IsPoisoned;
-        string language, Name0, Name1;
+        string Language, Name0, Name1;
         int timeSpeed = 1000;
         string savePath = Environment.CurrentDirectory + "/gameSave.dat";
         int[] GameData;
@@ -57,7 +57,7 @@ namespace RandomFights
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(language, GameData, Name0, Name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(Language, GameData, Name0, Name1, saveIsReal, enableSave);
         }
 
         private void pauseBtn_Click(object sender, RoutedEventArgs e)
@@ -82,6 +82,8 @@ namespace RandomFights
             Name1 = name1;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
+            Language = language;
+            translation();
             if (saveIsReal == true)
             {
                 ArrIntoInt();
@@ -413,11 +415,11 @@ namespace RandomFights
                         //граната
                         if (Rand.Next(0, 2) == 0)
                         {
-                            if (language == "eng")
+                            if (Language == "eng")
                             {
                                 grenadeText2 = "and hits.";
                             }
-                            else if (language == "ru")
+                            else if (Language == "ru")
                             {
                                 grenadeText2 = "и попадает.";
                             }
@@ -426,11 +428,11 @@ namespace RandomFights
                         }
                         else
                         {
-                            if (language == "eng")
+                            if (Language == "eng")
                             {
                                 grenadeText2 = ", but misses.";
                             }
-                            else if (language == "ru")
+                            else if (Language == "ru")
                             {
                                 grenadeText2 = ", но промахивается.";
                             }
@@ -540,12 +542,12 @@ namespace RandomFights
             if (hp0 < 0)
             {
                 playerIsDead = true;
-                if(language == "eng")
+                if(Language == "eng")
                 {
                     TB0.Text = "Died.";
                     TB1.Text = "Win.";
                 }
-                else if(language == "ru")
+                else if(Language == "ru")
                 {
                     TB0.Text = "Погиб.";
                     TB1.Text = "Победил.";
@@ -554,12 +556,12 @@ namespace RandomFights
             if (hp1 < 0)
             {
                 playerIsDead = true;
-                if (language == "eng")
+                if (Language == "eng")
                 {
                     TB0.Text = "Win.";
                     TB1.Text = "Died.";
                 }
-                else if (language == "ru")
+                else if (Language == "ru")
                 {
                     TB0.Text = "Победил.";
                     TB1.Text = "Погиб.";
@@ -575,52 +577,136 @@ namespace RandomFights
             Lvl1TB.Text = "Lvl " + lvl1;
             if(spell0 == 0)
             {
-                Effect0TB.Text = "Граната";
+                if (Language == "ru")
+                {
+                    Effect0TB.Text = "Граната";
+                }
+                else if (Language == "eng")
+                {
+                    Effect0TB.Text = "Grenade";
+                }
             }
             else if (spell0 == 1)
             {
-                Effect0TB.Text = "Отравление: " + poison1;
+                if (Language == "ru")
+                {
+                    Effect0TB.Text = "Отравление: " + poison1;
+                }
+                else if (Language == "eng")
+                {
+                    Effect0TB.Text = "Poisoning: " + poison1;
+                }
             }
             else if (spell0 == 2)
             {
-                Effect0TB.Text = "Реген. здоровья.";
+                if (Language == "ru")
+                {
+                    Effect0TB.Text = "Реген. здоровья.";
+                }
+                else if (Language == "eng")
+                {
+                    Effect0TB.Text = "HP regeneration.";
+                }
             }
             else if (spell0 == 3)
             {
-                Effect0TB.Text = "Доп. урон: " + ddam0;
+                if (Language == "ru")
+                {
+                    Effect0TB.Text = "Доп. урон: " + ddam0;
+                }
+                else if (Language == "eng")
+                {
+                    Effect0TB.Text = "Addit. damage: " + ddam0;
+                }
             }
             else if (spell0 == 4)
             {
-                Effect0TB.Text = "Щит: " + shield1;
+                if (Language == "ru")
+                {
+                    Effect0TB.Text = "Щит: " + shield1;
+                }
+                else if (Language == "eng")
+                {
+                    Effect0TB.Text = "Shield: " + shield1;
+                }
             }
             else if (spell0 == 5)
             {
-                Effect0TB.Text = "Доп. опыт.";
+                if (Language == "ru")
+                {
+                    Effect0TB.Text = "Доп. опыт.";
+                }
+                else if (Language == "eng")
+                {
+                    Effect0TB.Text = "Addit. XP.";
+                }
             }
 
             if (spell1 == 0)
             {
-                Effect1TB.Text = "Граната";
+                if (Language == "ru")
+                {
+                    Effect1TB.Text = "Граната";
+                }
+                else if (Language == "eng")
+                {
+                    Effect1TB.Text = "Grenade";
+                }
             }
             else if (spell1 == 1)
             {
-                Effect1TB.Text = "Отравление: " + poison0;
+                if (Language == "ru")
+                {
+                    Effect1TB.Text = "Отравление: " + poison0;
+                }
+                else if (Language == "eng")
+                {
+                    Effect1TB.Text = "Poisoning: " + poison0;
+                }
             }
             else if (spell1 == 2)
             {
-                Effect1TB.Text = "Реген. здоровья.";
+                if (Language == "ru")
+                {
+                    Effect1TB.Text = "Реген. здоровья.";
+                }
+                else if (Language == "eng")
+                {
+                    Effect1TB.Text = "HP regeneration.";
+                }
             }
             else if (spell1 == 3)
             {
-                Effect1TB.Text = "Доп. урон: " + ddam1;
+                if (Language == "ru")
+                {
+                    Effect1TB.Text = "Доп. урон: " + ddam1;
+                }
+                else if (Language == "eng")
+                {
+                    Effect1TB.Text = "Addit. damage: " + ddam1;
+                }
             }
             else if (spell1 == 4)
             {
-                Effect1TB.Text = "Щит: " + shield1;
+                if (Language == "ru")
+                {
+                    Effect1TB.Text = "Щит: " + shield1;
+                }
+                else if (Language == "eng")
+                {
+                    Effect1TB.Text = "Shield: " + shield1;
+                }
             }
             else if (spell1 == 5)
             {
-                Effect1TB.Text = "Доп. опыт.";
+                if (Language == "ru")
+                {
+                    Effect1TB.Text = "Доп. опыт.";
+                }
+                else if (Language == "eng")
+                {
+                    Effect1TB.Text = "Addit. XP.";
+                }
             }
         }
 
@@ -652,6 +738,23 @@ namespace RandomFights
             binaryWriter.Write(second);
             binaryWriter.Write(ssecond);
             binaryWriter.Dispose();
+        }
+        void translation()
+        {
+            if(Language == "ru")
+            {
+                homeBtn.Content = "Домой";
+                pauseBtn.Content = "Пауза";
+                restartBtn.Content = "Перезапуск";
+                skipBtn.Content = "Пропустить";
+            }
+            else if (Language == "eng")
+            {
+                homeBtn.Content = "Home";
+                pauseBtn.Content = "Pause";
+                restartBtn.Content = "Restart";
+                skipBtn.Content = "Skip";
+            }
         }
     }
 }

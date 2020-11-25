@@ -13,9 +13,6 @@ using System.Windows.Shapes;
 
 namespace RandomFights
 {
-    /// <summary>
-    /// Логика взаимодействия для online.xaml
-    /// </summary>
     public partial class online : Page
     {
         string language, Name0, Name1;
