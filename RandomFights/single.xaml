@@ -19,8 +19,8 @@
             <ColumnDefinition Width="2*"></ColumnDefinition>
             <ColumnDefinition Width="63*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="2" Text="TextBlock0" TextWrapping="Wrap" Foreground="White" Name="TB0" Margin="10,10,10,10" TextAlignment="Right" Background="#303030"/>
-        <TextBlock Grid.Row="2" Text="TextBlock1" TextWrapping="Wrap" Grid.Column="2" Foreground="White" Name="TB1" Margin="10,10,10,10" Background="#303030"/>
+        <TextBlock Grid.Row="2" Text="GameStart" TextWrapping="Wrap" Foreground="White" Name="TB0" Margin="10,10,10,10" TextAlignment="Right" Background="#303030"/>
+        <TextBlock Grid.Row="2" Text="GameStart" TextWrapping="Wrap" Grid.Column="2" Foreground="White" Name="TB1" Margin="10,10,10,10" Background="#303030"/>
         <TextBlock Text="Name0" TextWrapping="Wrap" Foreground="White" Name="Name0TB" Margin="0,0,250,0" HorizontalAlignment="Right" Width="310" Height="34" VerticalAlignment="Bottom" TextAlignment="Right" Background="#303030"/>
         <TextBlock Margin="0,0,130,0" Text="HP0" TextWrapping="Wrap" Foreground="White" Name="HP0TB" HorizontalAlignment="Right" Width="120" TextAlignment="Right" Background="#303030" Height="34" VerticalAlignment="Bottom"/>
         <TextBlock Margin="0,0,130,0" Text="Effect0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Foreground="White" Name="Effect0TB" Grid.Row="1" HorizontalAlignment="Right" Width="120" TextAlignment="Right" Background="#303030"/>
@@ -31,8 +31,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="110,0,0,0" Text="HP1" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="34" Width="120" Foreground="White" Grid.Column="2" Name="HP1TB" Background="#303030"/>
         <TextBlock HorizontalAlignment="Left" Margin="110,0,0,0" Text="Effect1" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="120" Foreground="White" Grid.Column="2" Name="Effect1TB" Grid.Row="1" Background="#303030"/>
         <TextBlock HorizontalAlignment="Left" Margin="230,0,0,0" Text="Name1" TextWrapping="Wrap" Width="310" Foreground="White" Grid.Column="2" Name="Name1TB" Background="#303030" Height="34" VerticalAlignment="Bottom"/>
-        <TextBox Margin="10,0,10,10" Grid.Row="2" Text="TextBox0" TextWrapping="Wrap" Name="Input0" Height="45" VerticalAlignment="Bottom"/>
-        <TextBox Margin="10,0,10,10" Grid.Row="2" Text="TextBox1" TextWrapping="Wrap" Grid.Column="2" Name="Input1" Height="45" VerticalAlignment="Bottom"/>
         <Button Content="Home" Grid.Column="2" Margin="0,0,5,0" Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Bottom" Background="#303030" BorderThickness="0" Foreground="White"/>
         <Button Content="Restart" Grid.Column="2" Margin="0,0,5,0" Name="restartBtn" HorizontalAlignment="Right" Width="35" Click="restartBtn_Click" Grid.Row="1" Height="35" VerticalAlignment="Top" Background="#303030" BorderThickness="0" Foreground="White"/>
         <Button Content="Pause" Grid.Column="2" Margin="0,0,40,0" Name="pauseBtn" Click="pauseBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Bottom" Background="#303030" BorderThickness="0" Foreground="White"/>

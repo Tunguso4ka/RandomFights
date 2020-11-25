@@ -35,7 +35,7 @@ namespace RandomFights
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(language, gameData, name0, name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(language, gameData, name0, name1, saveIsReal, enableSave);
         }
 
         private void onlinebtn_Click(object sender, RoutedEventArgs e)

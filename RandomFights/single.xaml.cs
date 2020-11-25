@@ -21,7 +21,7 @@ namespace RandomFights
     public partial class single : Page
     {
         bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, playerIsDead = false, player0IsPoisoned, player1IsPoisoned;
-        string Language, Name0, Name1;
+        string Language, Name0, Name1, time;
         int timeSpeed = 1000;
         string savePath = Environment.CurrentDirectory + "/gameSave.dat";
         int[] GameData;
@@ -45,14 +45,7 @@ namespace RandomFights
 
         private void restartBtn_Click(object sender, RoutedEventArgs e)
         {
-            playerIsDead = true;
-            if(File.Exists(savePath))
-            {
-                File.Delete(savePath);
-            }
-            standartInt();
-            playerIsDead = false;
-            setData();
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(Language, GameData, Name0, Name1, saveIsReal, enableSave);
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
@@ -74,7 +67,7 @@ namespace RandomFights
             }
         }
 
-        public single(string language, int[] gameData, string name0, string name1, bool SaveIsReal, bool EnableSave)
+        public single(string language, int[] gameData, string name0, string name1, bool SaveIsReal, bool EnableSave, int rb0Result, int rb1Result)
         {
             InitializeComponent();
             GameData = gameData;
@@ -83,6 +76,8 @@ namespace RandomFights
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
             Language = language;
+            spell0 = rb0Result;
+            spell1 = rb1Result;
             translation();
             if (saveIsReal == true)
             {
@@ -141,8 +136,6 @@ namespace RandomFights
             lvl1 = 1;
             xp0 = 0;
             xp1 = 0;
-            spell0 = 0;
-            spell1 = 0;
             poison0 = 0;
             poison1 = 0;
             minute = 0;
@@ -196,113 +189,24 @@ namespace RandomFights
             }
         }
 
-        async void setData()
+        void setData()
         {
-            second = 30;
-            TB0.Text = "Введите ник:";
-            TB1.Text = "Введите ник:";
-            Input0.Text = "";
-            Input1.Text = "";
-            Input0.Visibility = Visibility.Visible;
-            Input1.Visibility = Visibility.Visible;
-            while (playerIsDead == false)
-            {
-                if (gameIsPaused == false)
-                {
-                    second--;
-                    if(second == 0)
-                    {
-                        if(Input0.Text != "" && Input1.Text != "")
-                        {
-                            Name0 = Input0.Text;
-                            Name1 = Input1.Text;
-                            Input0.Text = "";
-                            Input1.Text = "";
-                        }
-                        else if ((Input0.Text == "") || (Input1.Text == ""))
-                        {
-                            Name0 = "Player0";
-                            Name1 = "Player1";
-                            Input0.Text = "";
-                            Input1.Text = "";
-                        }
-                        break;
-                    }
-                    SecondsTB.Text = Convert.ToString(second);
-                    await Task.Delay(timeSpeed);
-                }
-                if (gameIsPaused == true)
-                {
-                    await Task.Delay(100);
-                }
-                if (gameIsSkiped == true)
-                {
-                    second = 1;
-                    gameIsSkiped = false;
-                }
-                if (playerIsDead == true)
-                {
-                    break;
-                }
-            }
             Name0TB.Text = Name0;
             Name1TB.Text = Name1;
-            second = 30;
-            TB0.Text = "0. Граната, 1. Отравление, 2. Доп. реген хп, 3. Усиление урона, 4 Щит , 5. Повышение опыта. \nВведите способность:";
-            TB1.Text = "0. Граната, 1. Отравление, 2. Доп. реген хп, 3. Усиление урона, 4 Щит , 5. Повышение опыта. \nВведите способность:";
-            while (playerIsDead == false)
-            {
-                if (gameIsPaused == false)
-                {
-                    second--;
-                    if (second == 0)
-                    {
-                        if (Input0.Text != "" && Input1.Text != "")
-                        {
-                            spell0 = Convert.ToInt32(Input0.Text);
-                            spell1 = Convert.ToInt32(Input1.Text);
-                            Input0.Text = "";
-                            Input1.Text = "";
-                        }
-                        else if (Input0.Text == "" || Input1.Text == "")
-                        {
-                            spell0 = Rand.Next(0, 6);
-                            spell1 = Rand.Next(0, 6);
-                            Input0.Text = "";
-                            Input1.Text = "";
-                        }
-                        break;
-                    }
-                    SecondsTB.Text = Convert.ToString(second);
-                    await Task.Delay(timeSpeed);
-                }
-                if (gameIsPaused == true)
-                {
-                    await Task.Delay(100);
-                }
-                if (gameIsSkiped == true)
-                {
-                    second = 1;
-                    gameIsSkiped = false;
-                }
-                if (playerIsDead == true)
-                {
-                    break;
-                }
-            }
-            TB0.Text = "";
-            TB1.Text = "";
-            Input0.Text = "";
-            Input1.Text = "";
-            Input0.Visibility = Visibility.Hidden;
-            Input1.Visibility = Visibility.Hidden;
-            second = 0;
             gameProcess();
         }
 
         void battleProcess()
         {
-            if(Rand.Next(0,2) == 0)
+            if(second < 10)
+            {
+                time = " " + Convert.ToString(minute) + ":0" + Convert.ToString(second) + " ";
+            }
+            else
+            {
+                time = " " +  Convert.ToString(minute) + ":" + Convert.ToString(second) + " ";
+            }
+            if (Rand.Next(0,2) == 0)
             {
                 //игрок 0
                 int result = Rand.Next(0, 3);
@@ -313,15 +217,15 @@ namespace RandomFights
                         hp1 -= dam0 + ddam0;
                     }
                     xp0 += 10;
-                    TB0.Text = Name0 + " бьет " + Name1;
-                    TB1.Text = "";
+                    TB0.Text = Name0 + " бьет " + Name1 + time + "\n" + TB0.Text;
+                    TB1.Text = "\n" + TB1.Text;
                 }
                 else if (result == 1)
                 {
-                    TB0.Text = Name0 + " лечит себя.";
+                    TB0.Text = Name0 + " лечит себя." + time + "\n" + TB0.Text;
                     hp0 += ahp0;
                     xp0 += 10;
-                    TB1.Text = "";
+                    TB1.Text = "\n" + TB1.Text;
                 }
                 else
                 {
@@ -342,48 +246,48 @@ namespace RandomFights
                                 xp0 -= 10;
                             }
                         }
-                        TB0.Text = Name0 + " кидает в " + Name1 + " гранату " + grenadeText2;
-                        TB1.Text = "";
+                        TB0.Text = Name0 + " кидает в " + Name1 + " гранату " + grenadeText2 + time + "\n" + TB0.Text;
+                        TB1.Text = "\n" + TB1.Text;
                     }
                     else if (spell0 == 1)
                     {
                         //отравление
-                        TB0.Text = Name0 + " использует отравление на 3 секунды.";
+                        TB0.Text = Name0 + " использует отравление на 3 секунды." + time + "\n" + TB0.Text;
                         poison1 += 3;
                         xp0 += 10;
-                        TB1.Text = "";
+                        TB1.Text = "\n" + TB1.Text;
                         player1IsPoisoned = true;
                     }
                     else if (spell0 == 2)
                     {
                         //реген хп
-                        TB0.Text = Name0 + " использует усиленную регенерацию здоровья на себе.";
+                        TB0.Text = Name0 + " использует усиленную регенерацию здоровья на себе." + time + "\n" + TB0.Text;
                         hp0 += ahp0 * 2;
                         xp0 += 10;
-                        TB1.Text = "";
+                        TB1.Text = "\n" + TB1.Text;
                     }
                     else if (spell0 == 3)
                     {
                         //усилка урона
-                        TB0.Text = Name0 + " использует усиленние урона.";
+                        TB0.Text = Name0 + " использует усиленние урона." + time + "\n" + TB0.Text;
                         ddam0 += dam0;
                         xp0 += 10;
-                        TB1.Text = "";
+                        TB1.Text = "\n" + TB1.Text;
                     }
                     else if (spell0 == 4)
                     {
                         //щит
-                        TB0.Text = Name0 + " использует усиленние щита.";
+                        TB0.Text = Name0 + " использует усиленние щита." + time + "\n" + TB0.Text;
                         shield0 += dam0;
                         xp0 += 10;
-                        TB1.Text = "";
+                        TB1.Text = "\n" + TB1.Text;
                     }
                     else if (spell0 == 5)
                     {
                         //увеличение опыта
-                        TB0.Text = Name0 + " использует увеличенние опыта.";
+                        TB0.Text = Name0 + " использует увеличенние опыта." + time + "\n" + TB0.Text;
                         xp0 += 100;
-                        TB1.Text = "";
+                        TB1.Text = "\n" + TB1.Text;
                     }
                 }
             }
@@ -398,15 +302,15 @@ namespace RandomFights
                         hp0 -= dam1 + ddam1;
                     }
                     xp1 += 10;
-                    TB1.Text = Name1 + " бьет " + Name0;
-                    TB0.Text = "";
+                    TB1.Text = time + Name1 + " бьет " + Name0 + "\n" + TB1.Text;
+                    TB0.Text = "\n" + TB0.Text;
                 }
                 else if (result == 1)
                 {
-                    TB1.Text = Name1 + " лечит себя.";
+                    TB1.Text = time + Name1 + " лечит себя." + "\n" + TB1.Text;
                     hp1 += ahp1;
                     xp1 += 10;
-                    TB0.Text = "";
+                    TB0.Text = "\n" + TB0.Text;
                 }
                 else
                 {
@@ -441,48 +345,48 @@ namespace RandomFights
                                 xp1 -= 10;
                             }
                         }
-                        TB1.Text = Name1 + " кидает в " + Name0 + " гранату " + grenadeText2;
-                        TB0.Text = "";
+                        TB1.Text = time + Name1 + " кидает в " + Name0 + " гранату " + grenadeText2 + "\n" + TB1.Text;
+                        TB0.Text = "\n" + TB0.Text;
                     }
                     else if (spell1 == 1)
                     {
                         //отравление
-                        TB1.Text = Name1 + " использует отравление на 3 секунды.";
+                        TB1.Text = time + Name1 + " использует отравление на 3 секунды." + "\n" + TB1.Text;
                         poison0 += 3;
                         xp1 += 10;
-                        TB0.Text = "";
+                        TB0.Text = "\n" + TB0.Text;
                         player0IsPoisoned = true;
                     }
                     else if (spell1 == 2)
                     {
                         //реген хп
-                        TB1.Text = Name1 + " использует усиленную регенерацию здоровья на себе.";
+                        TB1.Text = time + Name1 + " использует усиленную регенерацию здоровья на себе." + "\n" + TB1.Text;
                         hp1 += ahp1 * 2;
                         xp1 += 10;
-                        TB0.Text = "";
+                        TB0.Text = "\n" + TB0.Text;
                     }
                     else if (spell1 == 3)
                     {
                         //усилка урона
-                        TB1.Text = Name1 + " использует усиленние урона.";
+                        TB1.Text = time + Name1 + " использует усиленние урона." + "\n" + TB1.Text;
                         ddam1 += dam1;
                         xp1 += 10;
-                        TB0.Text = "";
+                        TB0.Text = "\n" + TB0.Text;
                     }
                     else if (spell1 == 4)
                     {
                         //щит
-                        TB1.Text = Name1 + " использует усиленние щита.";
+                        TB1.Text = time + Name1 + " использует усиленние щита." + "\n" + TB1.Text;
                         shield1 += dam1;
                         xp1 += 10;
-                        TB0.Text = "";
+                        TB0.Text = "\n" + TB0.Text;
                     }
                     else if (spell1 == 5)
                     {
                         //увеличение опыта
-                        TB1.Text = Name1 + " использует увеличенние опыта.";
+                        TB1.Text = time + Name1 + " использует увеличенние опыта." + "\n" + TB1.Text;
                         xp1 += 100;
-                        TB0.Text = "";
+                        TB0.Text = "\n" + TB0.Text;
                     }
                 }
             }
@@ -544,13 +448,13 @@ namespace RandomFights
                 playerIsDead = true;
                 if(Language == "eng")
                 {
-                    TB0.Text = "Died.";
-                    TB1.Text = "Win.";
+                    TB0.Text = "Died." + time + "\n" + TB0.Text;
+                    TB1.Text = time + "Win." + "\n" + TB1.Text;
                 }
                 else if(Language == "ru")
                 {
-                    TB0.Text = "Погиб.";
-                    TB1.Text = "Победил.";
+                    TB0.Text = "Погиб." + time + "\n" + TB0.Text;
+                    TB1.Text = time + "Победил." + "\n" + TB1.Text;
                 }
             }
             if (hp1 < 0)
@@ -558,13 +462,13 @@ namespace RandomFights
                 playerIsDead = true;
                 if (Language == "eng")
                 {
-                    TB0.Text = "Win.";
-                    TB1.Text = "Died.";
+                    TB0.Text = "Win." + time + "\n" + TB0.Text;
+                    TB1.Text = time + "Died." + "\n" + TB1.Text;
                 }
                 else if (Language == "ru")
                 {
-                    TB0.Text = "Победил.";
-                    TB1.Text = "Погиб.";
+                    TB0.Text = "Победил." + time + "\n" + TB0.Text;
+                    TB1.Text = time + "Погиб." + "\n" + TB1.Text;
                 }
             }
         }

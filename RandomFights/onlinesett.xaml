@@ -1,4 +1,4 @@
-﻿<Page x:Class="RandomFights.help"
+﻿<Page x:Class="RandomFights.onlinesett"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,9 @@
       xmlns:local="clr-namespace:RandomFights"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
-      Title="help">
+      Title="onlinesett">
 
     <Grid>
-        <TextBlock Text="Help:" TextWrapping="Wrap" Foreground="White" Margin="10,10,10,10" Name="TB"/>
-        <Button Content="Home" Margin="0,5,5,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White"/>
+        
     </Grid>
 </Page>

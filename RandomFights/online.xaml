@@ -9,7 +9,7 @@
       Title="online">
 
     <Grid>
-        <Button Content="Home" Margin="0,5,5,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"/>
+        <Button Content="Home" Margin="0,5,5,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White"/>
 
     </Grid>
 </Page>
