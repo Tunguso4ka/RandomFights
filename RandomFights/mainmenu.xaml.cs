@@ -18,39 +18,36 @@ namespace RandomFights
     /// </summary>
     public partial class mainmenu : Page
     {
-        string language, name0, name1;
-        bool saveIsReal, enableSave;
-        int[] gameData;
-        public mainmenu(string Language, int[] GameData, string Name0, string Name1, bool SaveIsReal, bool EnableSave)
+        string AppLanguage;
+        bool saveIsReal, enableSave, isBetaOn;
+        public mainmenu(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn)
         {
             InitializeComponent();
-            language = Language;
-            gameData = GameData;
-            name0 = Name0;
-            name1 = Name1;
+            AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
+            isBetaOn = IsBetaOn;
             translate();
         }
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(language, gameData, name0, name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void onlinebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new online(language, gameData, name0, name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new online(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void settingsbtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new settings(language, gameData, name0, name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new settings(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void helpbtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(language, gameData, name0, name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void exitbtn_Click(object sender, RoutedEventArgs e)
@@ -60,7 +57,7 @@ namespace RandomFights
 
         void translate()
         {
-            if(language == "eng")
+            if(AppLanguage == "eng")
             {
                 singlebtn.Content = "Single";
                 onlinebtn.Content = "Online";
@@ -68,13 +65,19 @@ namespace RandomFights
                 helpbtn.Content = "Help";
                 exitbtn.Content = "Exit";
             }
-            else if(language == "ru")
+            else if(AppLanguage == "ru")
             {
                 singlebtn.Content = "Одиночная";
                 onlinebtn.Content = "Онлайн";
                 settingsbtn.Content = "Настройки";
                 helpbtn.Content = "Помощь";
                 exitbtn.Content = "Выход";
+            }
+
+            if(isBetaOn == true)
+            {
+                VersionTB.Text = VersionTB.Text + " BETA";
+                VersionTB.Foreground = Brushes.DarkRed;
             }
         }
     }

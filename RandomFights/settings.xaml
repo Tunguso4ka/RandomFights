@@ -46,9 +46,11 @@
         <RadioButton Content="English" Grid.Column="1" HorizontalAlignment="Left" Margin="74,10,0,8" Foreground="White" x:Name="RB1"/>
         <Button Content="Save" Margin="0,0,35,0" VerticalAlignment="Top" Height="35" x:Name="saveBtn" HorizontalAlignment="Right" Width="35" Grid.Column="3" Click="saveBtn_Click" Grid.RowSpan="2"  Background="#303030" BorderThickness="0" Foreground="White"/>
         <TextBlock Text="Delete saves:" TextWrapping="Wrap" Foreground="White" Grid.Row="1" Name="DsTb"/>
-        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,8" Grid.Row="1" Name="DeleteSavesCB" Checked="DeleteSavesCB_Checked"/>
+        <CheckBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,8" Grid.Row="1" Name="DeleteSavesCB" Checked="DeleteSavesCB_Checked"/>
         <TextBlock Text="Enable saves:" TextWrapping="Wrap" Foreground="White" Grid.Row="1" Margin="0,32,0,0" Name="EsTb" Grid.RowSpan="2"/>
-        <CheckBox Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,9" Grid.Row="2" x:Name="EnableSavesCB" Checked="EnableSavesCB_Checked"/>
+        <CheckBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,9" Grid.Row="2" x:Name="EnableSavesCB" Checked="EnableSavesCB_Checked"/>
+        <TextBlock Text="Enable BETA:" TextWrapping="Wrap" Foreground="White" Grid.Row="2" Margin="0,33,0,33" x:Name="EbTb" Grid.RowSpan="3"/>
+        <CheckBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,8,0,10" Grid.Row="3" x:Name="EnableBetaCB" Checked="EnableBetaCB_Checked"/>
 
     </Grid>
 </Page>

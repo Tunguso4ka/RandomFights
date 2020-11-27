@@ -1,23 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace RandomFights
 {
     public partial class singlesett : Page
     {
-        string Language, Name0, Name1;
+        string AppLanguage, Name0, Name1;
         int rb0Result, rb1Result;
-        bool saveIsReal, enableSave, rb0Checked = false, rb1Checked = false;
+        bool saveIsReal, enableSave, rb0Checked = false, rb1Checked = false, isBetaOn;
+
+        private void loadSaveGameBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (saveIsReal == true)
+            {
+                enableSave = true;
+                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, enableSave, rb0Result, rb1Result, isBetaOn);
+            }
+        }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -26,30 +26,31 @@ namespace RandomFights
             {
                 Name0 = Name0TB.Text;
                 Name1 = Name1TB.Text;
-                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(Language, GameData, Name0, Name1, saveIsReal, enableSave, rb0Result, rb1Result);
+                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, enableSave, rb0Result, rb1Result, isBetaOn);
             }
         }
 
-        int[] GameData;
-        public singlesett(string language, int[] gameData, string name0, string name1, bool SaveIsReal, bool EnableSave)
+        public singlesett(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn)
         {
             InitializeComponent();
-            GameData = gameData;
-            Name0 = name0;
-            Name1 = name1;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
-            Language = language;
+            isBetaOn = IsBetaOn;
+            AppLanguage = appLanguage;
             translation();
+            if (saveIsReal == false)
+            {
+                loadSaveGameBtn.Visibility = Visibility.Hidden;
+            }
         }
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(Language, GameData, Name0, Name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         void translation()
         {
-            if (Language == "ru")
+            if (AppLanguage == "ru")
             {
                 homeBtn.Content = "Домой.";
                 nextBtn.Content = "Следущее.";
@@ -69,7 +70,7 @@ namespace RandomFights
                 rb14.Content = "Щит.";
                 rb15.Content = "Дополнительный опыт.";
             }
-            else if (Language == "eng")
+            else if (AppLanguage == "eng")
             {
                 homeBtn.Content = "Home.";
                 nextBtn.Content = "Next.";

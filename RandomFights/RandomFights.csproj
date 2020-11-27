@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.6.1</Version>
+    <Version>0.6.2</Version>
     <Authors>Kira Kosova</Authors>
     <Company>GameChan</Company>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -13,6 +13,7 @@
     <DelaySign>false</DelaySign>
     <StartupObject>RandomFights.App</StartupObject>
     <ApplicationIcon>img\randomfightslogo.ico</ApplicationIcon>
+    <AssemblyVersion>0.6.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

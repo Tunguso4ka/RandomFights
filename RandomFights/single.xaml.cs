@@ -15,17 +15,33 @@ using System.Windows.Shapes;
 
 namespace RandomFights
 {
-    /// <summary>
-    /// Логика взаимодействия для single.xaml
-    /// </summary>
     public partial class single : Page
     {
-        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, playerIsDead = false, player0IsPoisoned, player1IsPoisoned;
-        string Language, Name0, Name1, time;
+        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned;
+        string AppLanguage, Name0, Name1, time;
         int timeSpeed = 1000;
-        string savePath = Environment.CurrentDirectory + "/gameSave.dat";
-        int[] GameData;
-        int maxhp0 , maxhp1, hp0, hp1, ahp0, ahp1, shield0, shield1, dam0, dam1, ddam0, ddam1, lvl0, lvl1, xp0, xp1, spell0, spell1, poison0, poison1, minute, second, ssecond;
+        string SavePath = Environment.CurrentDirectory + "/gameSave.dat";
+        int MaxHP0; //максимально возможное колво здоровья
+        int HP0; //само здоровье
+        int AddHP0; //колво здоровья для добавления
+        int Shield0; //Щит
+        int Damage0; //Урон
+        int AdditDamage0; //Дополнительный урон
+        int Level0; //Уровень
+        int XP0; //Опыт
+        int Spell0; //Номер способности
+        int Poisoning0; //Эффект отравления
+        int MaxHP1; //максимально возможное колво здоровья
+        int HP1; //само здоровье
+        int AddHP1; //колво здоровья для добавления
+        int Shield1; //Щит
+        int Damage1; //Урон
+        int AdditDamage1; //Дополнительный урон
+        int Level1; //Уровень
+        int XP1; //Опыт
+        int Spell1; //Номер способности
+        int Poisoning1; //Эффект отравления
+        int Minute, Second, AdditSecond;
 
         Random Rand = new Random();
 
@@ -45,12 +61,12 @@ namespace RandomFights
 
         private void restartBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(Language, GameData, Name0, Name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(Language, GameData, Name0, Name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void pauseBtn_Click(object sender, RoutedEventArgs e)
@@ -67,17 +83,17 @@ namespace RandomFights
             }
         }
 
-        public single(string language, int[] gameData, string name0, string name1, bool SaveIsReal, bool EnableSave, int rb0Result, int rb1Result)
+        public single(string appLanguage, string name0, string name1, bool SaveIsReal, bool EnableSave, int rb0Result, int rb1Result, bool IsBetaOn)
         {
             InitializeComponent();
-            GameData = gameData;
             Name0 = name0;
             Name1 = name1;
+            isBetaOn = IsBetaOn;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
-            Language = language;
-            spell0 = rb0Result;
-            spell1 = rb1Result;
+            AppLanguage = appLanguage;
+            Spell0 = rb0Result;
+            Spell1 = rb1Result;
             translation();
             if (saveIsReal == true)
             {
@@ -92,55 +108,62 @@ namespace RandomFights
 
         void ArrIntoInt()
         {
-            maxhp0 = GameData[0];
-            maxhp1 = GameData[1];
-            hp0 = GameData[2];
-            hp1 = GameData[3];
-            ahp0 = GameData[4];
-            ahp1 = GameData[5];
-            shield0 = GameData[6];
-            shield1 = GameData[7];
-            dam0 = GameData[8];
-            dam1 = GameData[9];
-            ddam0 = GameData[10];
-            ddam1 = GameData[11];
-            lvl0 = GameData[12];
-            lvl1 = GameData[13];
-            xp0 = GameData[14];
-            xp1 = GameData[15];
-            spell0 = GameData[16];
-            spell1 = GameData[17];
-            poison0 = GameData[18];
-            poison1 = GameData[19];
-            minute = GameData[20];
-            second = GameData[21];
-            ssecond = GameData[22];
+            if (File.Exists(SavePath))
+            {
+                BinaryReader BinaryReader = new BinaryReader(File.OpenRead(SavePath));
+                Name0 = BinaryReader.ReadString();
+                Name1 = BinaryReader.ReadString();
+                MaxHP0 = BinaryReader.ReadInt32();
+                MaxHP1 = BinaryReader.ReadInt32();
+                HP0 = BinaryReader.ReadInt32();
+                HP1 = BinaryReader.ReadInt32();
+                AddHP0 = BinaryReader.ReadInt32();
+                AddHP1 = BinaryReader.ReadInt32();
+                Shield0 = BinaryReader.ReadInt32();
+                Shield1 = BinaryReader.ReadInt32();
+                Damage0 = BinaryReader.ReadInt32();
+                Damage1 = BinaryReader.ReadInt32();
+                AdditDamage0 = BinaryReader.ReadInt32();
+                AdditDamage1 = BinaryReader.ReadInt32();
+                Level0 = BinaryReader.ReadInt32();
+                Level1 = BinaryReader.ReadInt32();
+                XP0 = BinaryReader.ReadInt32();
+                XP1 = BinaryReader.ReadInt32();
+                Spell0 = BinaryReader.ReadInt32();
+                Spell1 = BinaryReader.ReadInt32();
+                Poisoning0 = BinaryReader.ReadInt32();
+                Poisoning1 = BinaryReader.ReadInt32();
+                Minute = BinaryReader.ReadInt32();
+                Second = BinaryReader.ReadInt32();
+                AdditSecond = BinaryReader.ReadInt32();
+                BinaryReader.Dispose();
+            }
             gameProcess();
         }
 
         void standartInt()
         {
-            maxhp0 = 100;
-            maxhp1 = 100;
-            hp0 = 100;
-            hp1 = 100;
-            ahp0 = 10;
-            ahp1 = 10;
-            shield0 = 0;
-            shield1 = 0;
-            dam0 = 10;
-            dam1 = 10;
-            ddam0 = 0;
-            ddam1 = 0;
-            lvl0 = 1;
-            lvl1 = 1;
-            xp0 = 0;
-            xp1 = 0;
-            poison0 = 0;
-            poison1 = 0;
-            minute = 0;
-            second = 0;
-            ssecond = 0;
+            MaxHP0 = 100;
+            MaxHP1 = 100;
+            HP0 = 100;
+            HP1 = 100;
+            AddHP0 = 10;
+            AddHP1 = 10;
+            Shield0 = 0;
+            Shield1 = 0;
+            Damage0 = 10;
+            Damage1 = 10;
+            AdditDamage0 = 0;
+            AdditDamage1 = 0;
+            Level0 = 1;
+            Level1 = 1;
+            XP0 = 0;
+            XP1 = 0;
+            Poisoning0 = 0;
+            Poisoning1 = 0;
+            Minute = 0;
+            Second = 0;
+            AdditSecond = 0;
         }
 
         async void gameProcess()
@@ -152,19 +175,19 @@ namespace RandomFights
                     battleProcess();
                     UISet();
                     deathCheck();
-                    second++;
-                    if(second == 60)
+                    Second++;
+                    if(Second == 60)
                     {
-                        minute++;
-                        second = 0;
+                        Minute++;
+                        Second = 0;
                     }
-                    MinuteTB.Text = Convert.ToString(minute) + ":";
-                    SecondsTB.Text = Convert.ToString(second);
-                    ssecond++;
-                    if (ssecond == 11)
+                    MinuteTB.Text = Convert.ToString(Minute) + ":";
+                    SecondsTB.Text = Convert.ToString(Second);
+                    AdditSecond++;
+                    if (AdditSecond == 11)
                     {
                         gameSave();
-                        ssecond = 0;
+                        AdditSecond = 0;
                     }
                     await Task.Delay(timeSpeed);
                 }
@@ -198,13 +221,13 @@ namespace RandomFights
 
         void battleProcess()
         {
-            if(second < 10)
+            if(Second < 10)
             {
-                time = " " + Convert.ToString(minute) + ":0" + Convert.ToString(second) + " ";
+                time = " " + Convert.ToString(Minute) + ":0" + Convert.ToString(Second) + " ";
             }
             else
             {
-                time = " " +  Convert.ToString(minute) + ":" + Convert.ToString(second) + " ";
+                time = " " +  Convert.ToString(Minute) + ":" + Convert.ToString(Second) + " ";
             }
             if (Rand.Next(0,2) == 0)
             {
@@ -212,81 +235,81 @@ namespace RandomFights
                 int result = Rand.Next(0, 3);
                 if (result == 0)
                 {
-                    if((dam0 + ddam0) - shield1 >= 0)
+                    if((Damage0 + AdditDamage0) - Shield1 >= 0)
                     {
-                        hp1 -= dam0 + ddam0;
+                        HP1 -= Damage0 + AdditDamage0;
                     }
-                    xp0 += 10;
+                    XP0 += 10;
                     TB0.Text = Name0 + " бьет " + Name1 + time + "\n" + TB0.Text;
                     TB1.Text = "\n" + TB1.Text;
                 }
                 else if (result == 1)
                 {
                     TB0.Text = Name0 + " лечит себя." + time + "\n" + TB0.Text;
-                    hp0 += ahp0;
-                    xp0 += 10;
+                    HP0 += AddHP0;
+                    XP0 += 10;
                     TB1.Text = "\n" + TB1.Text;
                 }
                 else
                 {
-                    if(spell0 == 0)
+                    if(Spell0 == 0)
                     {
                         //граната
                         if(Rand.Next(0,2) == 0)
                         {
                             grenadeText2 = "и попадает.";
-                            hp1 -= dam0 * 2;
-                            xp0 += 10;
+                            HP1 -= Damage0 * 2;
+                            XP0 += 10;
                         }
                         else
                         {
                             grenadeText2 = ", но промахивается.";
-                            if(xp0 > 10)
+                            if(XP0 > 10)
                             {
-                                xp0 -= 10;
+                                XP0 -= 10;
                             }
                         }
                         TB0.Text = Name0 + " кидает в " + Name1 + " гранату " + grenadeText2 + time + "\n" + TB0.Text;
                         TB1.Text = "\n" + TB1.Text;
                     }
-                    else if (spell0 == 1)
+                    else if (Spell0 == 1)
                     {
                         //отравление
                         TB0.Text = Name0 + " использует отравление на 3 секунды." + time + "\n" + TB0.Text;
-                        poison1 += 3;
-                        xp0 += 10;
+                        Poisoning1 += 3;
+                        XP0 += 10;
                         TB1.Text = "\n" + TB1.Text;
                         player1IsPoisoned = true;
                     }
-                    else if (spell0 == 2)
+                    else if (Spell0 == 2)
                     {
                         //реген хп
                         TB0.Text = Name0 + " использует усиленную регенерацию здоровья на себе." + time + "\n" + TB0.Text;
-                        hp0 += ahp0 * 2;
-                        xp0 += 10;
+                        HP0 += AddHP0 * 2;
+                        XP0 += 10;
                         TB1.Text = "\n" + TB1.Text;
                     }
-                    else if (spell0 == 3)
+                    else if (Spell0 == 3)
                     {
                         //усилка урона
                         TB0.Text = Name0 + " использует усиленние урона." + time + "\n" + TB0.Text;
-                        ddam0 += dam0;
-                        xp0 += 10;
+                        AdditDamage0 += Damage0;
+                        XP0 += 10;
                         TB1.Text = "\n" + TB1.Text;
                     }
-                    else if (spell0 == 4)
+                    else if (Spell0 == 4)
                     {
                         //щит
                         TB0.Text = Name0 + " использует усиленние щита." + time + "\n" + TB0.Text;
-                        shield0 += dam0;
-                        xp0 += 10;
+                        Shield0 += Damage0;
+                        XP0 += 10;
                         TB1.Text = "\n" + TB1.Text;
                     }
-                    else if (spell0 == 5)
+                    else if (Spell0 == 5)
                     {
                         //увеличение опыта
                         TB0.Text = Name0 + " использует увеличенние опыта." + time + "\n" + TB0.Text;
-                        xp0 += 100;
+                        XP0 += 100;
                         TB1.Text = "\n" + TB1.Text;
                     }
                 }
@@ -297,95 +320,95 @@ namespace RandomFights
                 int result = Rand.Next(0, 3);
                 if (result == 0)
                 {
-                    if ((dam1 + ddam1) - shield0 >= 0)
+                    if ((Damage1 + AdditDamage1) - Shield0 >= 0)
                     {
-                        hp0 -= dam1 + ddam1;
+                        HP0 -= Damage1 + AdditDamage1;
                     }
-                    xp1 += 10;
+                    XP1 += 10;
                     TB1.Text = time + Name1 + " бьет " + Name0 + "\n" + TB1.Text;
                     TB0.Text = "\n" + TB0.Text;
                 }
                 else if (result == 1)
                 {
                     TB1.Text = time + Name1 + " лечит себя." + "\n" + TB1.Text;
-                    hp1 += ahp1;
-                    xp1 += 10;
+                    HP1 += AddHP1;
+                    XP1 += 10;
                     TB0.Text = "\n" + TB0.Text;
                 }
                 else
                 {
-                    if (spell1 == 0)
+                    if (Spell1 == 0)
                     {
                         //граната
                         if (Rand.Next(0, 2) == 0)
                         {
-                            if (Language == "eng")
+                            if (AppLanguage == "eng")
                             {
                                 grenadeText2 = "and hits.";
                             }
-                            else if (Language == "ru")
+                            else if (AppLanguage == "ru")
                             {
                                 grenadeText2 = "и попадает.";
                             }
-                            xp1 += 10;
-                            hp0 -= dam1 * 2;
+                            XP1 += 10;
+                            HP0 -= Damage1 * 2;
                         }
                         else
                         {
-                            if (Language == "eng")
+                            if (AppLanguage == "eng")
                             {
                                 grenadeText2 = ", but misses.";
                             }
-                            else if (Language == "ru")
+                            else if (AppLanguage == "ru")
                             {
                                 grenadeText2 = ", но промахивается.";
                             }
-                            if(xp1 > 10)
+                            if(XP1 > 10)
                             {
-                                xp1 -= 10;
+                                XP1 -= 10;
                             }
                         }
                         TB1.Text = time + Name1 + " кидает в " + Name0 + " гранату " + grenadeText2 + "\n" + TB1.Text;
                         TB0.Text = "\n" + TB0.Text;
                     }
-                    else if (spell1 == 1)
+                    else if (Spell1 == 1)
                     {
                         //отравление
                         TB1.Text = time + Name1 + " использует отравление на 3 секунды." + "\n" + TB1.Text;
-                        poison0 += 3;
-                        xp1 += 10;
+                        Poisoning0 += 3;
+                        XP1 += 10;
                         TB0.Text = "\n" + TB0.Text;
                         player0IsPoisoned = true;
                     }
-                    else if (spell1 == 2)
+                    else if (Spell1 == 2)
                     {
                         //реген хп
                         TB1.Text = time + Name1 + " использует усиленную регенерацию здоровья на себе." + "\n" + TB1.Text;
-                        hp1 += ahp1 * 2;
-                        xp1 += 10;
+                        HP1 += AddHP1 * 2;
+                        XP1 += 10;
                         TB0.Text = "\n" + TB0.Text;
                     }
-                    else if (spell1 == 3)
+                    else if (Spell1 == 3)
                     {
                         //усилка урона
                         TB1.Text = time + Name1 + " использует усиленние урона." + "\n" + TB1.Text;
-                        ddam1 += dam1;
-                        xp1 += 10;
+                        AdditDamage1 += Damage1;
+                        XP1 += 10;
                         TB0.Text = "\n" + TB0.Text;
                     }
-                    else if (spell1 == 4)
+                    else if (Spell1 == 4)
                     {
                         //щит
                         TB1.Text = time + Name1 + " использует усиленние щита." + "\n" + TB1.Text;
-                        shield1 += dam1;
-                        xp1 += 10;
+                        Shield1 += Damage1;
+                        XP1 += 10;
                         TB0.Text = "\n" + TB0.Text;
                     }
-                    else if (spell1 == 5)
+                    else if (Spell1 == 5)
                     {
                         //увеличение опыта
                         TB1.Text = time + Name1 + " использует увеличенние опыта." + "\n" + TB1.Text;
-                        xp1 += 100;
+                        XP1 += 100;
                         TB0.Text = "\n" + TB0.Text;
                     }
                 }
@@ -394,78 +417,78 @@ namespace RandomFights
 
         void deathCheck()
         {
-            if(hp0 > maxhp0)
+            if(HP0 > MaxHP0)
             {
-                hp0 = maxhp0;
+                HP0 = MaxHP0;
             }
-            if (hp1 > maxhp1)
+            if (HP1 > MaxHP1)
             {
-                hp1 = maxhp1;
+                HP1 = MaxHP1;
             }
 
-            if (xp0 >= 100)
+            if (XP0 >= 100)
             {
-                xp0 -= 100;
-                lvl0++;
-                dam0 += 5;
-                maxhp0 += 50;
-                hp0 += 50;
-                ahp0 += 5;
+                XP0 -= 100;
+                Level0++;
+                Damage0 += 5;
+                MaxHP0 += 50;
+                HP0 += 50;
+                AddHP0 += 5;
             }
-            if (xp1 >= 100)
+            if (XP1 >= 100)
             {
-                xp1 -= 100;
-                lvl1++;
-                dam1 += 5;
-                maxhp1 += 50;
-                hp1 += 50;
-                ahp1 += 5;
+                XP1 -= 100;
+                Level1++;
+                Damage1 += 5;
+                MaxHP1 += 50;
+                HP1 += 50;
+                AddHP1 += 5;
             }
 
             if (player0IsPoisoned == true)
             {
-                hp0 -= dam1;
-                poison0 -= 1;
-                xp1 += 10;
-                if(poison0 == 0)
+                HP0 -= Damage1;
+                Poisoning0 -= 1;
+                XP1 += 10;
+                if(Poisoning0 == 0)
                 {
                     player0IsPoisoned = false;
                 }
             }
             if (player1IsPoisoned == true)
             {
-                hp1 -= dam0;
-                poison1 -= 1;
-                xp0 += 10;
-                if (poison1 == 0)
+                HP1 -= Damage0;
+                Poisoning1 -= 1;
+                XP0 += 10;
+                if (Poisoning1 == 0)
                 {
                     player1IsPoisoned = false;
                 }
             }
 
-            if (hp0 < 0)
+            if (HP0 < 0)
             {
                 playerIsDead = true;
-                if(Language == "eng")
+                if(AppLanguage == "eng")
                 {
                     TB0.Text = "Died." + time + "\n" + TB0.Text;
                     TB1.Text = time + "Win." + "\n" + TB1.Text;
                 }
-                else if(Language == "ru")
+                else if(AppLanguage == "ru")
                 {
                     TB0.Text = "Погиб." + time + "\n" + TB0.Text;
                     TB1.Text = time + "Победил." + "\n" + TB1.Text;
                 }
             }
-            if (hp1 < 0)
+            if (HP1 < 0)
             {
                 playerIsDead = true;
-                if (Language == "eng")
+                if (AppLanguage == "eng")
                 {
                     TB0.Text = "Win." + time + "\n" + TB0.Text;
                     TB1.Text = time + "Died." + "\n" + TB1.Text;
                 }
-                else if (Language == "ru")
+                else if (AppLanguage == "ru")
                 {
                     TB0.Text = "Победил." + time + "\n" + TB0.Text;
                     TB1.Text = time + "Погиб." + "\n" + TB1.Text;
@@ -475,139 +498,139 @@ namespace RandomFights
 
         void UISet()
         {
-            HP0TB.Text = "HP " + hp0;
-            HP1TB.Text = "HP " + hp1;
-            Lvl0TB.Text = "Lvl " + lvl0;
-            Lvl1TB.Text = "Lvl " + lvl1;
-            if(spell0 == 0)
+            HP0TB.Text = "HP " + HP0 + "/" + MaxHP0;
+            HP1TB.Text = "HP " + HP1 + "/" + MaxHP1;
+            Lvl0TB.Text = "Lvl " + Level0;
+            Lvl1TB.Text = "Lvl " + Level1;
+            if(Spell0 == 0)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
                     Effect0TB.Text = "Граната";
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
                     Effect0TB.Text = "Grenade";
                 }
             }
-            else if (spell0 == 1)
+            else if (Spell0 == 1)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
-                    Effect0TB.Text = "Отравление: " + poison1;
+                    Effect0TB.Text = "Отравление: " + Poisoning1;
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
-                    Effect0TB.Text = "Poisoning: " + poison1;
+                    Effect0TB.Text = "Poisoning: " + Poisoning1;
                 }
             }
-            else if (spell0 == 2)
+            else if (Spell0 == 2)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
                     Effect0TB.Text = "Реген. здоровья.";
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
                     Effect0TB.Text = "HP regeneration.";
                 }
             }
-            else if (spell0 == 3)
+            else if (Spell0 == 3)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
-                    Effect0TB.Text = "Доп. урон: " + ddam0;
+                    Effect0TB.Text = "Доп. урон: " + AdditDamage0;
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
-                    Effect0TB.Text = "Addit. damage: " + ddam0;
+                    Effect0TB.Text = "Addit. damage: " + AdditDamage0;
                 }
             }
-            else if (spell0 == 4)
+            else if (Spell0 == 4)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
-                    Effect0TB.Text = "Щит: " + shield1;
+                    Effect0TB.Text = "Щит: " + Shield1;
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
-                    Effect0TB.Text = "Shield: " + shield1;
+                    Effect0TB.Text = "Shield: " + Shield1;
                 }
             }
-            else if (spell0 == 5)
+            else if (Spell0 == 5)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
                     Effect0TB.Text = "Доп. опыт.";
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
                     Effect0TB.Text = "Addit. XP.";
                 }
             }
 
-            if (spell1 == 0)
+            if (Spell1 == 0)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
                     Effect1TB.Text = "Граната";
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
                     Effect1TB.Text = "Grenade";
                 }
             }
-            else if (spell1 == 1)
+            else if (Spell1 == 1)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
-                    Effect1TB.Text = "Отравление: " + poison0;
+                    Effect1TB.Text = "Отравление: " + Poisoning0;
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
-                    Effect1TB.Text = "Poisoning: " + poison0;
+                    Effect1TB.Text = "Poisoning: " + Poisoning0;
                 }
             }
-            else if (spell1 == 2)
+            else if (Spell1 == 2)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
                     Effect1TB.Text = "Реген. здоровья.";
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
                     Effect1TB.Text = "HP regeneration.";
                 }
             }
-            else if (spell1 == 3)
+            else if (Spell1 == 3)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
-                    Effect1TB.Text = "Доп. урон: " + ddam1;
+                    Effect1TB.Text = "Доп. урон: " + AdditDamage1;
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
-                    Effect1TB.Text = "Addit. damage: " + ddam1;
+                    Effect1TB.Text = "Addit. damage: " + AdditDamage1;
                 }
             }
-            else if (spell1 == 4)
+            else if (Spell1 == 4)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
-                    Effect1TB.Text = "Щит: " + shield1;
+                    Effect1TB.Text = "Щит: " + Shield1;
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
-                    Effect1TB.Text = "Shield: " + shield1;
+                    Effect1TB.Text = "Shield: " + Shield1;
                 }
             }
-            else if (spell1 == 5)
+            else if (Spell1 == 5)
             {
-                if (Language == "ru")
+                if (AppLanguage == "ru")
                 {
                     Effect1TB.Text = "Доп. опыт.";
                 }
-                else if (Language == "eng")
+                else if (AppLanguage == "eng")
                 {
                     Effect1TB.Text = "Addit. XP.";
                 }
@@ -616,43 +639,43 @@ namespace RandomFights
 
         void gameSave()
         {
-            File.Delete(savePath);
-            BinaryWriter binaryWriter = new BinaryWriter(File.Open(savePath, FileMode.Create));
+            File.Delete(SavePath);
+            BinaryWriter binaryWriter = new BinaryWriter(File.Open(SavePath, FileMode.Create));
             binaryWriter.Write(Name0);
             binaryWriter.Write(Name1);
-            binaryWriter.Write(hp0);
-            binaryWriter.Write(hp1);
-            binaryWriter.Write(ahp0);
-            binaryWriter.Write(ahp1);
-            binaryWriter.Write(shield0);
-            binaryWriter.Write(shield1);
-            binaryWriter.Write(dam0);
-            binaryWriter.Write(dam1);
-            binaryWriter.Write(ddam0);
-            binaryWriter.Write(ddam1);
-            binaryWriter.Write(lvl0);
-            binaryWriter.Write(lvl1);
-            binaryWriter.Write(xp0);
-            binaryWriter.Write(xp1);
-            binaryWriter.Write(spell0);
-            binaryWriter.Write(spell1);
-            binaryWriter.Write(poison0);
-            binaryWriter.Write(poison1);
-            binaryWriter.Write(minute);
-            binaryWriter.Write(second);
-            binaryWriter.Write(ssecond);
+            binaryWriter.Write(HP0);
+            binaryWriter.Write(HP1);
+            binaryWriter.Write(AddHP0);
+            binaryWriter.Write(AddHP1);
+            binaryWriter.Write(Shield0);
+            binaryWriter.Write(Shield1);
+            binaryWriter.Write(Damage0);
+            binaryWriter.Write(Damage1);
+            binaryWriter.Write(AdditDamage0);
+            binaryWriter.Write(AdditDamage1);
+            binaryWriter.Write(Level0);
+            binaryWriter.Write(Level1);
+            binaryWriter.Write(XP0);
+            binaryWriter.Write(XP1);
+            binaryWriter.Write(Spell0);
+            binaryWriter.Write(Spell1);
+            binaryWriter.Write(Poisoning0);
+            binaryWriter.Write(Poisoning1);
+            binaryWriter.Write(Minute);
+            binaryWriter.Write(Second);
+            binaryWriter.Write(AdditSecond);
             binaryWriter.Dispose();
         }
         void translation()
         {
-            if(Language == "ru")
+            if(AppLanguage == "ru")
             {
                 homeBtn.Content = "Домой";
                 pauseBtn.Content = "Пауза";
                 restartBtn.Content = "Перезапуск";
                 skipBtn.Content = "Пропустить";
             }
-            else if (Language == "eng")
+            else if (AppLanguage == "eng")
             {
                 homeBtn.Content = "Home";
                 pauseBtn.Content = "Pause";

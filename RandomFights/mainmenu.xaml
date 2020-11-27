@@ -23,7 +23,7 @@
         <Label Content="Random Fights" Margin="10,10,0,0" VerticalAlignment="Top" Height="150" Foreground="White" FontSize="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="RFText" HorizontalAlignment="Left" Width="620"/>
         <Button Content="Help" x:Name="helpbtn" Foreground="White" Background="Transparent" Click="helpbtn_Click" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Width="62" Height="40" VerticalAlignment="Top"/>
         <Button Content="Exit" x:Name="exitbtn" Margin="62,0,0,0" Foreground="White" Background="Transparent" Click="exitbtn_Click" Grid.Row="1" Height="40" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="62"/>
-        <TextBlock Text="Version: 0.6.0.2" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
+        <TextBlock Text="Version: 0.6.2.0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
 
     </Grid>
 </Page>

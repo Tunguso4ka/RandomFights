@@ -19,20 +19,29 @@ namespace RandomFights
     /// </summary>
     public partial class settings : Page
     {
-        string Language, Name0, Name1;
-        bool saveIsReal, deleteSave = false, enableSave = false;
+        string AppLanguage;
+        bool saveIsReal, deleteSave = false, enableSave = false, isBetaOn;
         string settPath = Environment.CurrentDirectory + "/settings.dat", savePath = Environment.CurrentDirectory + "/gameSave.dat";
-        int[] GameData;
-        public settings(string language, int[] gameData, string name0, string name1, bool SaveIsReal, bool EnableSave)
+        public settings(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn)
         {
             InitializeComponent();
-            GameData = gameData;
-            Language = language;
-            Name0 = name0;
-            Name1 = name1;
+            AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
+            isBetaOn = IsBetaOn;
             translate();
+        }
+
+        private void EnableBetaCB_Checked(object sender, RoutedEventArgs e)
+        {
+            if (isBetaOn == false)
+            {
+                isBetaOn = true;
+            }
+            else if (isBetaOn == true)
+            {
+                isBetaOn = false;
+            }
         }
 
         private void EnableSavesCB_Checked(object sender, RoutedEventArgs e)
@@ -59,7 +68,7 @@ namespace RandomFights
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(Language, GameData, Name0, Name1, saveIsReal, enableSave);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         void settSave()
@@ -71,18 +80,19 @@ namespace RandomFights
             BinaryWriter binaryWriter = new BinaryWriter(File.Open(settPath, FileMode.Create));
             if(RB0.IsChecked == true) 
             {
-                Language = "ru"; 
+                AppLanguage = "ru"; 
             }
             else if (RB1.IsChecked == true) 
             {
-                Language = "eng"; 
+                AppLanguage = "eng"; 
             }
             else 
             {
-                Language = "eng"; 
+                AppLanguage = "eng"; 
             }
-            binaryWriter.Write(Language);
+            binaryWriter.Write(AppLanguage);
             binaryWriter.Write(enableSave);
+            binaryWriter.Write(isBetaOn);
             binaryWriter.Dispose();
 
             if(deleteSave == true)
@@ -92,21 +102,23 @@ namespace RandomFights
         }
         void translate()
         {
-            if (Language == "eng")
+            if (AppLanguage == "eng")
             {
                 homeBtn.Content = "Home.";
                 saveBtn.Content = "Save.";
                 LangTB.Text = "Language: ";
                 DsTb.Text = "Delete saves: ";
                 EsTb.Text = "Enable saves: ";
+                EbTb.Text = "Enable BETA:";
             }
-            else if (Language == "ru")
+            else if (AppLanguage == "ru")
             {
                 homeBtn.Content = "Назад.";
                 saveBtn.Content = "Сохранить.";
                 LangTB.Text = "Язык: ";
                 DsTb.Text = "Удалить сохранение: ";
                 EsTb.Text = "Активировать сохранения: ";
+                EbTb.Text = "Активировать БЕТА:";
             }
         }
     }
