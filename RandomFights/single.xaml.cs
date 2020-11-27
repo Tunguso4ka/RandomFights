@@ -138,6 +138,8 @@ namespace RandomFights
                 AdditSecond = BinaryReader.ReadInt32();
                 BinaryReader.Dispose();
             }
+            MinuteTB.Text = Convert.ToString(Minute) + ":";
+            SecondsTB.Text = Convert.ToString(Second);
             gameProcess();
         }
 
@@ -238,6 +240,7 @@ namespace RandomFights
                     if((Damage0 + AdditDamage0) - Shield1 >= 0)
                     {
                         HP1 -= Damage0 + AdditDamage0;
+                        AdditDamage0 = 0;
                     }
                     XP0 += 10;
                     TB0.Text = Name0 + " бьет " + Name1 + time + "\n" + TB0.Text;
@@ -323,6 +326,7 @@ namespace RandomFights
                     if ((Damage1 + AdditDamage1) - Shield0 >= 0)
                     {
                         HP0 -= Damage1 + AdditDamage1;
+                        AdditDamage1 = 0;
                     }
                     XP1 += 10;
                     TB1.Text = time + Name1 + " бьет " + Name0 + "\n" + TB1.Text;
@@ -643,6 +647,8 @@ namespace RandomFights
             BinaryWriter binaryWriter = new BinaryWriter(File.Open(SavePath, FileMode.Create));
             binaryWriter.Write(Name0);
             binaryWriter.Write(Name1);
+            binaryWriter.Write(MaxHP0);
+            binaryWriter.Write(MaxHP1);
             binaryWriter.Write(HP0);
             binaryWriter.Write(HP1);
             binaryWriter.Write(AddHP0);
