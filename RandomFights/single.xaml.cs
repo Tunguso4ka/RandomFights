@@ -17,10 +17,13 @@ namespace RandomFights
 {
     public partial class single : Page
     {
-        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned;
+        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned, ConsoleIsTapped;
         string AppLanguage, Name0, Name1, time;
         int timeSpeed = 1000;
-        string SavePath = Environment.CurrentDirectory + "/gameSave.dat";
+        string SavePath = Environment.CurrentDirectory + @"\gameSave.dat";
+        //
+        string[] CCSM;
+        //
         int MaxHP0; //максимально возможное колво здоровья
         int HP0; //само здоровье
         int AddHP0; //колво здоровья для добавления
@@ -41,7 +44,7 @@ namespace RandomFights
         int XP1; //Опыт
         int Spell1; //Номер способности
         int Poisoning1; //Эффект отравления
-        int Minute, Second, AdditSecond;
+        int Minute, Second;
 
         Random Rand = new Random();
 
@@ -67,6 +70,399 @@ namespace RandomFights
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
+        }
+
+        private void CheatCodeInput_TextInput(object sender, TextCompositionEventArgs e)
+        {
+            
+        }
+
+        async void CheatCodeLogic()
+        {
+            while(true)
+            {
+                if (gameIsPaused == false && playerIsDead == false )
+                {
+                    CheatCodeText.Text = "\n" + Minute + ":" + Second + "\n" + Name0 + " " + MaxHP0 + " " + HP0 + " " + AddHP0 + " " + Shield0 + " " + Damage0 + " " + AdditDamage0 + " " + Level0 + " " + XP0 + " " + Spell0 + " " + Poisoning0 + "     " + Name1 + " " + MaxHP1 + " " + HP1 + " " + AddHP1 + " " + Shield1 + " " + Damage1 + " " + AdditDamage1 + " " + Level1 + " " + XP1 + " " + Spell1 + " " + Poisoning1 + "\n" + CheatCodeText.Text;
+                }
+                await Task.Delay(1000);
+            }
+        }
+
+        void CheatCodeEnterCheck()
+        {
+            if(CCSM[0] == "help")
+            {
+                CheatCodeText.Text += "\nHelp:\n";
+            }
+
+            //MaxHP
+            else if (CCSM[0] == "MaxHP0" || CCSM[0] == "maxhp0")
+            {
+                if(CCSM[1] != "")
+                {
+                    try
+                    {
+                        MaxHP0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "MaxHP1" || CCSM[0] == "maxhp1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        MaxHP1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //HP
+            else if (CCSM[0] == "HP0" || CCSM[0] == "hp0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        HP0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "HP1" || CCSM[0] == "hp1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        HP1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //AddHP
+            else if (CCSM[0] == "AddHP0" || CCSM[0] == "addhp0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        AddHP0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "AddHP1" || CCSM[0] == "addhp1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        AddHP1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //Shield
+            else if (CCSM[0] == "Shield0" || CCSM[0] == "shield0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Shield0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "Shield1" || CCSM[0] == "shield1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Shield1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //Damage0
+            else if (CCSM[0] == "Damage0" || CCSM[0] == "damage0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Damage0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "Damage1" || CCSM[0] == "damage1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Damage1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //AdditDamage0
+            else if (CCSM[0] == "AdditDamage0" || CCSM[0] == "additdamage0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        AdditDamage0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "AdditDamage1" || CCSM[0] == "additdamage1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        AdditDamage1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //Level
+            else if (CCSM[0] == "Level0" || CCSM[0] == "level0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Level0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "Level1" || CCSM[0] == "level1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Level1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //XP
+            else if (CCSM[0] == "XP0" || CCSM[0] == "xp0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        XP0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "XP1" || CCSM[0] == "xp1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        XP1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //Spell 
+            else if (CCSM[0] == "Spell0" || CCSM[0] == "spell0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Spell0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "Spell1" || CCSM[0] == "spell1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Spell1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            //Poisoning 
+            else if (CCSM[0] == "Poisoning0" || CCSM[0] == "poisoning0")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Poisoning0 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+            else if (CCSM[0] == "Poisoning1" || CCSM[0] == "poisoning1")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        Poisoning1 = Convert.ToInt32(CCSM[1]);
+                        CheatCodeText.Text = CCSM[0] + " now " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
+            }
+
+            else
+            {
+                CheatCodeText.Text = "Command " + CCSM[0] + " not found " + "\n" + CheatCodeText.Text;
+            }
+        }
+
+        /*
+        int Minute, Second; */
+
+        private void ConsoleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (ConsoleIsTapped == false)
+            {
+                ToggleConsoleOn();
+                ConsoleIsTapped = true;
+            }
+            else
+            {
+                ToggleConsoleOff();
+                ConsoleIsTapped = false;
+            }
+        }
+
+        void ToggleConsoleOn()
+        {
+            CheatCodeConsoleGrid.Visibility = Visibility.Visible;
+            CheatCodeInput.Visibility = Visibility.Visible;
+            CheatCodeText.Visibility = Visibility.Visible;
+            ConsoleEnterBtn.Visibility = Visibility.Visible;
+        }
+
+        private void ConsoleEnterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(CheatCodeInput.Text != "")
+            {
+                CCSM = CheatCodeInput.Text.Split(" ");
+                CheatCodeInput.Text = "";
+                CheatCodeEnterCheck();
+            }
+        }
+
+        void ToggleConsoleOff()
+        {
+            CheatCodeConsoleGrid.Visibility = Visibility.Hidden;
+            CheatCodeInput.Visibility = Visibility.Hidden;
+            CheatCodeText.Visibility = Visibility.Hidden;
+            ConsoleEnterBtn.Visibility = Visibility.Hidden;
         }
 
         private void pauseBtn_Click(object sender, RoutedEventArgs e)
@@ -95,7 +491,7 @@ namespace RandomFights
             Spell0 = rb0Result;
             Spell1 = rb1Result;
             translation();
-            if (saveIsReal == true)
+            if (saveIsReal == true && enableSave == true)
             {
                 ArrIntoInt();
             }
@@ -103,6 +499,11 @@ namespace RandomFights
             {
                 standartInt();
                 setData();
+            }
+            if(isBetaOn == true)
+            {
+                CheatCodeLogic();
+                ConsoleBtn.Visibility = Visibility.Visible;
             }
         }
 
@@ -135,9 +536,10 @@ namespace RandomFights
                 Poisoning1 = BinaryReader.ReadInt32();
                 Minute = BinaryReader.ReadInt32();
                 Second = BinaryReader.ReadInt32();
-                AdditSecond = BinaryReader.ReadInt32();
                 BinaryReader.Dispose();
             }
+            Name0TB.Text = Name0;
+            Name1TB.Text = Name1;
             MinuteTB.Text = Convert.ToString(Minute) + ":";
             SecondsTB.Text = Convert.ToString(Second);
             gameProcess();
@@ -165,7 +567,6 @@ namespace RandomFights
             Poisoning1 = 0;
             Minute = 0;
             Second = 0;
-            AdditSecond = 0;
         }
 
         async void gameProcess()
@@ -185,12 +586,7 @@ namespace RandomFights
                     }
                     MinuteTB.Text = Convert.ToString(Minute) + ":";
                     SecondsTB.Text = Convert.ToString(Second);
-                    AdditSecond++;
-                    if (AdditSecond == 11)
-                    {
-                        gameSave();
-                        AdditSecond = 0;
-                    }
+                    gameSave();
                     await Task.Delay(timeSpeed);
                 }
                 if(gameIsPaused == true)
@@ -669,7 +1065,6 @@ namespace RandomFights
             binaryWriter.Write(Poisoning1);
             binaryWriter.Write(Minute);
             binaryWriter.Write(Second);
-            binaryWriter.Write(AdditSecond);
             binaryWriter.Dispose();
         }
         void translation()

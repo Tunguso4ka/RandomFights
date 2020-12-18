@@ -26,6 +26,7 @@ namespace RandomFights
             {
                 Name0 = Name0TB.Text;
                 Name1 = Name1TB.Text;
+                enableSave = false;
                 ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, enableSave, rb0Result, rb1Result, isBetaOn);
             }
         }

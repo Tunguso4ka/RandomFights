@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.6.2.1</Version>
+    <Version>0.7.0.0</Version>
     <Authors>Kira Kosova</Authors>
     <Company>GameChan</Company>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -13,7 +13,8 @@
     <DelaySign>false</DelaySign>
     <StartupObject>RandomFights.App</StartupObject>
     <ApplicationIcon>img\randomfightslogo.ico</ApplicationIcon>
-    <AssemblyVersion>0.6.2.1</AssemblyVersion>
+    <AssemblyVersion>0.7.0.0</AssemblyVersion>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -21,8 +22,26 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="img\" />
+    <None Remove="img\save.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="fls\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

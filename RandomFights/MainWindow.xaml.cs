@@ -20,8 +20,8 @@ namespace RandomFights
     /// </summary>
     public partial class MainWindow : Window
     {
-        string AppLanguage;
-        bool saveIsReal, enableSave, isBetaOn;
+        string AppLanguage, UserLogin;
+        bool saveIsReal, enableSave, isBetaOn, RFUIsConected, RFUIsLoged;
         string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat";
         public MainWindow()
         {

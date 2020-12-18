@@ -27,6 +27,14 @@ namespace RandomFights
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
             isBetaOn = IsBetaOn;
+            if(IsBetaOn == true)
+            {
+                onlinebtn.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                onlinebtn.Visibility = Visibility.Hidden;
+            }
             translate();
         }
 
@@ -37,7 +45,7 @@ namespace RandomFights
 
         private void onlinebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new online(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new onlinesett(AppLanguage, saveIsReal, enableSave, isBetaOn);
         }
 
         private void settingsbtn_Click(object sender, RoutedEventArgs e)

@@ -9,6 +9,22 @@
       Title="onlinesett">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="13*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Content="Home" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White" Grid.Column="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="64,0,0,0" Text="000.000.00.0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Your IP:" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" Height="16" Width="39"/>
+        <TextBox HorizontalAlignment="Left" Margin="64,0,0,0" Text="000.000.00.0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Grid.Row="1" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Friend IP:" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" Grid.Row="1" Height="16" Width="49"/>
+
     </Grid>
 </Page>
