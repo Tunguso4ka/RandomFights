@@ -11,6 +11,7 @@ namespace RandomFights
     {
         string AppLanguage, UserLogin;
         bool saveIsReal, enableSave, isBetaOn, RFUIsConected, RFUIsLoged;
+        int ScreenMode;
         string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat";
         public MainWindow()
         {
@@ -24,8 +25,10 @@ namespace RandomFights
                 AppLanguage = "eng";
                 enableSave = false;
                 saveIsReal = false;
+                ScreenMode = 2;
             }
-            frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ScreenChange();
+            frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
         void searchSettings()
         {
@@ -35,6 +38,7 @@ namespace RandomFights
                 AppLanguage = BinaryReader.ReadString();
                 enableSave = BinaryReader.ReadBoolean();
                 isBetaOn = BinaryReader.ReadBoolean();
+                ScreenMode = BinaryReader.ReadInt32();
                 BinaryReader.Dispose();
             }
             else
@@ -50,6 +54,33 @@ namespace RandomFights
             else
             {
                 saveIsReal = false;
+            }
+        }
+
+        void ScreenChange()
+        {
+            if (ScreenMode == 0)
+            {
+                Visibility = Visibility.Collapsed;
+                WindowStyle = WindowStyle.None;
+                ResizeMode = ResizeMode.NoResize;
+                WindowState = WindowState.Maximized;
+                Topmost = true;
+                Visibility = Visibility.Visible;
+            }
+            else if (ScreenMode == 1)
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                ResizeMode = ResizeMode.CanResize;
+                Topmost = false;
+                WindowStyle = WindowStyle.None;
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowStyle = WindowStyle.SingleBorderWindow;
+                ResizeMode = ResizeMode.CanResize;
+                Topmost = false;
             }
         }
     }

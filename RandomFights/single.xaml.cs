@@ -11,7 +11,7 @@ namespace RandomFights
     {
         bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned, ConsoleIsTapped;
         string AppLanguage, Name0, Name1, time;
-        int timeSpeed = 1000;
+        int timeSpeed = 1000, ScreenMode;
         string SavePath = Environment.CurrentDirectory + @"\gameSave.dat";
         //
         string[] CCSM;
@@ -56,12 +56,12 @@ namespace RandomFights
 
         private void restartBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         private void CheatCodeInput_TextInput(object sender, TextCompositionEventArgs e)
@@ -85,7 +85,25 @@ namespace RandomFights
         {
             if(CCSM[0] == "help")
             {
-                CheatCodeText.Text += "\nHelp:\n";
+                CheatCodeText.Text = "\nHelp:\nMaxHP0, HP0, AddHP0, Shield0, Damage0, AdditDamage0, Level0, XP0, Spell0, Poisoning0, Console\n" + CheatCodeText.Text;
+            }
+
+            else if (CCSM[0] == "Console" || CCSM[0] == "console")
+            {
+                if (CCSM[1] != "")
+                {
+                    try
+                    {
+                        if(CCSM[1] == "Clear" || CCSM[1] == "clear")
+                        {
+                            CheatCodeText.Text = "Console cleared.";
+                        }
+                    }
+                    catch
+                    {
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                    }
+                }
             }
 
             //MaxHP
@@ -100,7 +118,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -115,7 +133,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -132,7 +150,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -164,7 +182,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -196,7 +214,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -228,7 +246,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -260,7 +278,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -292,7 +310,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -324,7 +342,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -356,7 +374,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -388,7 +406,7 @@ namespace RandomFights
                     }
                     catch
                     {
-                        CheatCodeText.Text += "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
+                        CheatCodeText.Text = "Error in " + CCSM[1] + "\n" + CheatCodeText.Text;
                     }
                 }
             }
@@ -471,7 +489,7 @@ namespace RandomFights
             }
         }
 
-        public single(string appLanguage, string name0, string name1, bool SaveIsReal, bool EnableSave, int rb0Result, int rb1Result, bool IsBetaOn)
+        public single(string appLanguage, string name0, string name1, bool SaveIsReal, bool EnableSave, int rb0Result, int rb1Result, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             Name0 = name0;
@@ -482,6 +500,7 @@ namespace RandomFights
             AppLanguage = appLanguage;
             Spell0 = rb0Result;
             Spell1 = rb1Result;
+            ScreenMode = screenMode;
             translation();
             if (saveIsReal == true && enableSave == true)
             {

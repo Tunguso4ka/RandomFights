@@ -46,7 +46,7 @@
                 <TextBlock Name="CheatCodeText" Text="GameStart" Foreground="LawnGreen" Visibility="Hidden"/>
             </ScrollViewer>
             <TextBox Name="CheatCodeInput" TextInput="CheatCodeInput_TextInput" Grid.Row="1" Margin="0,0,25,0" TextWrapping="Wrap" Visibility="Hidden"/>
-            <Button Content="Enter" Grid.Column="0" Margin="560,0,0,0" Name="ConsoleEnterBtn" HorizontalAlignment="Left" Width="50" Click="ConsoleEnterBtn_Click" Background="#303030" BorderThickness="0" Foreground="White" Height="26" VerticalAlignment="Center" Grid.Row="1" Visibility="Hidden"/>
+            <Button Content="Enter" Grid.Column="0" Margin="560,0,0,0" Name="ConsoleEnterBtn" HorizontalAlignment="Left" Width="50" Click="ConsoleEnterBtn_Click" Background="#303030" BorderThickness="0" Foreground="White" Height="26" VerticalAlignment="Center" Grid.Row="1" Visibility="Hidden" IsDefault="True"/>
         </Grid>
 
     </Grid>

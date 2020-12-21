@@ -20,13 +20,15 @@ namespace RandomFights
     {
         string AppLanguage;
         bool saveIsReal, enableSave, isBetaOn;
-        public mainmenu(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn)
+        int ScreenMode;
+        public mainmenu(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
             isBetaOn = IsBetaOn;
+            ScreenMode = screenMode;
             if(IsBetaOn == true)
             {
                 onlinebtn.Visibility = Visibility.Visible;
@@ -35,27 +37,30 @@ namespace RandomFights
             {
                 onlinebtn.Visibility = Visibility.Hidden;
             }
+
+            WhatsNewNewTB.Text = "1. Screen modes.\n2. Console bug fixes.\n3. Settings new design.\n4. Some bugfixes.\n5.Added new bugs.";
+
             translate();
         }
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         private void onlinebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new onlinesett(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new onlinesett(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         private void settingsbtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new settings(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new settings(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         private void helpbtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         private void exitbtn_Click(object sender, RoutedEventArgs e)

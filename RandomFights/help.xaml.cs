@@ -10,20 +10,22 @@ namespace RandomFights
     {
         string AppLanguage;
         bool saveIsReal, enableSave, isBetaOn;
-        public help(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn)
+        int ScreenMode;
+        public help(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
             enableSave = EnableSave;
             isBetaOn = IsBetaOn;
+            ScreenMode = screenMode;
             setText();
             translate();
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
         void setText()

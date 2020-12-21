@@ -9,6 +9,6 @@
         Background="#333333"
         Title="Random Fights" Height="720" Width="1280">
     <Grid>
-        <Frame Content="Frame" Name="frame0" NavigationUIVisibility="Hidden"/>
+        <Frame Content="Frame" Name="frame0" NavigationUIVisibility="Hidden" Margin="5,5,5,5"/>
     </Grid>
 </Window>

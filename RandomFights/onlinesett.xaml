@@ -5,26 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RandomFights"
       mc:Ignorable="d" 
-      d:DesignHeight="720" d:DesignWidth="1280"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="onlinesett">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="13*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Button Content="Home" Margin="0,10,10,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White" Grid.Column="2"/>
-        <TextBox HorizontalAlignment="Left" Margin="64,0,0,0" Text="000.000.00.0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Height="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Your IP:" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" Height="16" Width="39"/>
-        <TextBox HorizontalAlignment="Left" Margin="64,0,0,0" Text="000.000.00.0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" Grid.Row="1" Height="18"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Text="Friend IP:" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" Grid.Row="1" Height="16" Width="49"/>
-
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Left" Text="Your IP:" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" Height="30"/>
+            <TextBlock HorizontalAlignment="Left" Text="Friend IP:" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="White" Height="30"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBox HorizontalAlignment="Left" Text="000.000.00.0" TextWrapping="Wrap" VerticalAlignment="Center" Height="30" IsReadOnly="True" Name="YIPTextBox1"/>
+            <TextBox HorizontalAlignment="Left" Text="000.000.00.0" TextWrapping="Wrap" VerticalAlignment="Center" Height="30" Name="FIPTB1" TextChanged="FIPTB1_TextChanged"/>
+        </StackPanel>
+        <Button Content="Home" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White" Grid.Column="1"/>
+        <Button Content="Next" VerticalAlignment="Top" Height="35" x:Name="NextBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White" Grid.Column="1" Margin="0,0,35,0"/>
     </Grid>
 </Page>
