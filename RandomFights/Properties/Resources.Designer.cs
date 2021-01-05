@@ -59,5 +59,14 @@ namespace RandomFights.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eng.
+        /// </summary>
+        internal static string VersionApp {
+            get {
+                return ResourceManager.GetString("VersionApp", resourceCulture);
+            }
+        }
     }
 }

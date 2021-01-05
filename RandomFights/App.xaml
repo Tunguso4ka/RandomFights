@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:RandomFights"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBlock" x:Key="TextBlock0">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
     </Application.Resources>
 </Application>

@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.7.0.2</Version>
+    <Version>0.7.1</Version>
     <Authors>Kira Kosova</Authors>
     <Company>GameChan</Company>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -13,7 +13,7 @@
     <DelaySign>false</DelaySign>
     <StartupObject>RandomFights.App</StartupObject>
     <ApplicationIcon>img\randomfightslogo.ico</ApplicationIcon>
-    <AssemblyVersion>0.7.0.2</AssemblyVersion>
+    <AssemblyVersion>0.7.1.0</AssemblyVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NoWin32Manifest>true</NoWin32Manifest>
     <PackageProjectUrl>https://github.com/Tunguso4ka/RandomFights</PackageProjectUrl>

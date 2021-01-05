@@ -19,7 +19,7 @@ namespace RandomFights
     public partial class mainmenu : Page
     {
         string AppLanguage;
-        bool saveIsReal, enableSave, isBetaOn;
+        bool saveIsReal, enableSave, isBetaOn, SingleListVisible, OnlineListVisible;
         int ScreenMode;
         public mainmenu(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
         {
@@ -31,14 +31,18 @@ namespace RandomFights
             ScreenMode = screenMode;
             if(IsBetaOn == true)
             {
-                onlinebtn.Visibility = Visibility.Visible;
+                OnlineListBtn.Visibility = Visibility.Visible;
             }
             else
             {
-                onlinebtn.Visibility = Visibility.Hidden;
+                OnlineListBtn.Visibility = Visibility.Hidden;
             }
+            onlinebtn.Visibility = Visibility.Hidden;
+            onlinebtn1.Visibility = Visibility.Hidden;
+            singlebtn.Visibility = Visibility.Hidden;
+            singlebtn1.Visibility = Visibility.Hidden;
 
-            WhatsNewNewTB.Text = "1. Screen modes.\n2. Console bug fixes.\n3. Settings new design.\n4. Some bugfixes.\n5.Added new bugs.";
+            WhatsNewNewTB.Text = "///";
 
             translate();
         }
@@ -63,6 +67,52 @@ namespace RandomFights
             ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
         }
 
+        private void singlebtn1_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new SingleGamePage();
+        }
+
+        private void SingleListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(SingleListVisible == true)
+            {
+                singlebtn.Visibility = Visibility.Hidden;
+                singlebtn1.Visibility = Visibility.Hidden;
+                SingleListVisible = false;
+            }
+            else
+            {
+                singlebtn.Visibility = Visibility.Visible;
+                if(isBetaOn == true)
+                {
+                    singlebtn1.Visibility = Visibility.Visible;
+                }
+                onlinebtn.Visibility = Visibility.Hidden;
+                onlinebtn1.Visibility = Visibility.Hidden;
+                SingleListVisible = true;
+                OnlineListVisible = false;
+            }
+        }
+
+        private void OnlineListBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (OnlineListVisible == true)
+            {
+                onlinebtn.Visibility = Visibility.Hidden;
+                onlinebtn1.Visibility = Visibility.Hidden;
+                OnlineListVisible = false;
+            }
+            else
+            {
+                onlinebtn.Visibility = Visibility.Visible;
+                onlinebtn1.Visibility = Visibility.Visible;
+                singlebtn.Visibility = Visibility.Hidden;
+                singlebtn1.Visibility = Visibility.Hidden;
+                OnlineListVisible = true;
+                SingleListVisible = false;
+            }
+        }
+
         private void exitbtn_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Window.GetWindow(this)).Close();
@@ -72,16 +122,24 @@ namespace RandomFights
         {
             if(AppLanguage == "eng")
             {
-                singlebtn.Content = "Single";
-                onlinebtn.Content = "Online";
+                SingleListBtn.Content = "Single";
+                singlebtn.Content = "Classic";
+                singlebtn1.Content = "Tactic";
+                OnlineListBtn.Content = "Online";
+                onlinebtn.Content = "";
+                onlinebtn1.Content = "";
                 settingsbtn.Content = "Settings";
                 helpbtn.Content = "Help";
                 exitbtn.Content = "Exit";
             }
             else if(AppLanguage == "ru")
             {
-                singlebtn.Content = "Одиночная";
-                onlinebtn.Content = "Онлайн";
+                SingleListBtn.Content = "Одиночная";
+                singlebtn.Content = "Классическая";
+                singlebtn1.Content = "Тактическая";
+                OnlineListBtn.Content = "Онлайн";
+                onlinebtn.Content = "";
+                onlinebtn1.Content = "";
                 settingsbtn.Content = "Настройки";
                 helpbtn.Content = "Помощь";
                 exitbtn.Content = "Выход";

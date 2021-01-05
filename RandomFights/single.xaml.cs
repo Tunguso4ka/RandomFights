@@ -69,18 +69,6 @@ namespace RandomFights
             
         }
 
-        async void CheatCodeLogic()
-        {
-            while(true)
-            {
-                if (gameIsPaused == false && playerIsDead == false )
-                {
-                    CheatCodeText.Text = "\n" + Minute + ":" + Second + "\n" + Name0 + " " + MaxHP0 + " " + HP0 + " " + AddHP0 + " " + Shield0 + " " + Damage0 + " " + AdditDamage0 + " " + Level0 + " " + XP0 + " " + Spell0 + " " + Poisoning0 + "     " + Name1 + " " + MaxHP1 + " " + HP1 + " " + AddHP1 + " " + Shield1 + " " + Damage1 + " " + AdditDamage1 + " " + Level1 + " " + XP1 + " " + Spell1 + " " + Poisoning1 + "\n" + CheatCodeText.Text;
-                }
-                await Task.Delay(1000);
-            }
-        }
-
         void CheatCodeEnterCheck()
         {
             if(CCSM[0] == "help")
@@ -97,6 +85,11 @@ namespace RandomFights
                         if(CCSM[1] == "Clear" || CCSM[1] == "clear")
                         {
                             CheatCodeText.Text = "Console cleared.";
+                        }
+                        else if(CCSM[1] == "Close" || CCSM[1] == "close")
+                        {
+                            ToggleConsoleOff();
+                            ConsoleIsTapped = false;
                         }
                     }
                     catch
@@ -513,7 +506,6 @@ namespace RandomFights
             }
             if(isBetaOn == true)
             {
-                CheatCodeLogic();
                 ConsoleBtn.Visibility = Visibility.Visible;
             }
         }

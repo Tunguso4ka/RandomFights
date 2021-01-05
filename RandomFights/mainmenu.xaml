@@ -15,19 +15,32 @@
         </Grid.RowDefinitions>
         <Grid Grid.Row="1" Background="#303030">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel VerticalAlignment="Center">
-                <Button Content="Single" Name="singlebtn" Foreground="White" Background="Transparent" Click="singlebtn_Click" Height="50" VerticalAlignment="Bottom"/>
-                <Button Content="Online" Name="onlinebtn" Foreground="White" Background="Transparent" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom"/>
+                <Button Content="Single" Name="SingleListBtn" Foreground="White" Background="Transparent" Click="SingleListBtn_Click" Height="50" VerticalAlignment="Bottom"/>
+                <Button Content="Online" Name="OnlineListBtn" Foreground="White" Background="Transparent" Click="OnlineListBtn_Click" Height="50" VerticalAlignment="Bottom"/>
                 <Button Content="Settings" x:Name="settingsbtn" Foreground="White" Background="Transparent" Click="settingsbtn_Click" Height="40"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Help" x:Name="helpbtn" Foreground="White" Background="Transparent" Click="helpbtn_Click" Height="30" Width="100"/>
-                    <Button Content="Exit" x:Name="exitbtn" Foreground="White" Background="Transparent" Click="exitbtn_Click" Height="30" Width="100"/>
+                    <Button Content="Help" x:Name="helpbtn" Foreground="White" Background="Transparent" Click="helpbtn_Click" Height="30" Width="75"/>
+                    <Button Content="Exit" x:Name="exitbtn" Foreground="White" Background="Transparent" Click="exitbtn_Click" Height="30" Width="75"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" Grid.Column="1">
+            <StackPanel VerticalAlignment="Center" Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Classic" Name="singlebtn" Foreground="White" Background="Transparent" Click="singlebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Tactic" Name="singlebtn1" Foreground="White" Background="Transparent" Click="singlebtn1_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Make room" Name="onlinebtn" Foreground="White" Background="Transparent" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Connect" Name="onlinebtn1" Foreground="White" Background="Transparent" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                </StackPanel>
+                <TextBlock Height="40"/>
+                <TextBlock Height="30"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <StackPanel Width="500">
                     <TextBlock Text="Whats new:" Foreground="White"/>
                     <TextBlock Text="-" Foreground="White" Name="WhatsNewNewTB"/>
@@ -38,7 +51,7 @@
             </StackPanel>
         </Grid>
         <Label Content="Random Fights" Margin="10,10,0,0" VerticalAlignment="Top" Height="150" Foreground="White" FontSize="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="RFText" HorizontalAlignment="Left" Width="620"/>
-        <TextBlock Text="Version: 0.7.0.2" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
+        <TextBlock Text="Version: 0.8" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
 
     </Grid>
 </Page>

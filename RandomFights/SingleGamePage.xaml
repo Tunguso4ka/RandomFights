@@ -1,0 +1,57 @@
+﻿<Page x:Class="RandomFights.SingleGamePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomFights"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="SingleGamePage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Name0" Name="Name0TextBlock" Style="{StaticResource TextBlock0}" FontSize="24"/>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="HP0/MaxHP0" Name="HP0TextBlock" Style="{StaticResource TextBlock0}"/>
+                    <TextBlock Text="00:00" Name="Time0TextBlock" Style="{StaticResource TextBlock0}" Width="45"/>
+                    <TextBlock Text="HP1/MaxHP1" Name="HP1TextBlock" Style="{StaticResource TextBlock0}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Lvl0" Name="Lvl0TextBlock" Style="{StaticResource TextBlock0}"/>
+                    <TextBlock Text="Spell0" Name="Spell0TextBlock" Style="{StaticResource TextBlock0}"/>
+                    <TextBlock Text="VS" Style="{StaticResource TextBlock0}" Width="45"/>
+                    <TextBlock Text="Spell1" Name="Spell1TextBlock" Style="{StaticResource TextBlock0}"/>
+                    <TextBlock Text="Lvl1" Name="Lvl1TextBlock" Style="{StaticResource TextBlock0}"/>
+                </StackPanel>
+            </StackPanel>
+            <TextBlock Text="Name1" Name="Name1TextBlock" Style="{StaticResource TextBlock0}" FontSize="24"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Border CornerRadius="30" Height="550" Width="550" Background="#353535">
+                <Grid Height="500" Width="500" x:Name="GameGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Player0" Name="Player0" Style="{StaticResource TextBlock0}" VerticalAlignment="Center"/>
+                    <TextBlock Text="Player1" Name="Player1" Grid.Column="4" Grid.Row="4" Style="{StaticResource TextBlock0}" VerticalAlignment="Center"/>
+                </Grid>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>
