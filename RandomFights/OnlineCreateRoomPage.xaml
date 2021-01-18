@@ -1,4 +1,4 @@
-﻿<Page x:Class="RandomFights.online"
+﻿<Page x:Class="RandomFights.OnlineCreateRoomPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,9 @@
       xmlns:local="clr-namespace:RandomFights"
       mc:Ignorable="d" 
       d:DesignHeight="720" d:DesignWidth="1280"
-      Title="online">
+      Title="OnlineCreateRoomPage">
 
     <Grid>
-        <Button Content="Home" Margin="0,5,5,0" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35"  Background="#303030" BorderThickness="0" Foreground="White"/>
-
+        <Button Content="Home" Grid.Column="2" Margin="0,5,5,0" Click="HomeBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Top" Background="#303030" BorderThickness="0" Foreground="White"/>
     </Grid>
 </Page>

@@ -10,7 +10,7 @@ namespace RandomFights
     public partial class MainWindow : Window
     {
         string AppLanguage, UserLogin;
-        bool saveIsReal, enableSave, isBetaOn, RFUIsConected, RFUIsLoged;
+        bool saveIsReal, isBetaOn, RFUIsConected, RFUIsLoged;
         int ScreenMode;
         string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat";
         public MainWindow()
@@ -23,12 +23,11 @@ namespace RandomFights
             catch
             {
                 AppLanguage = "eng";
-                enableSave = false;
                 saveIsReal = false;
                 ScreenMode = 2;
             }
             ScreenChange();
-            frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
         void searchSettings()
         {
@@ -36,7 +35,6 @@ namespace RandomFights
             {
                 BinaryReader BinaryReader = new BinaryReader(File.OpenRead(settPath));
                 AppLanguage = BinaryReader.ReadString();
-                enableSave = BinaryReader.ReadBoolean();
                 isBetaOn = BinaryReader.ReadBoolean();
                 ScreenMode = BinaryReader.ReadInt32();
                 BinaryReader.Dispose();
@@ -44,7 +42,6 @@ namespace RandomFights
             else
             {
                 AppLanguage = "eng";
-                enableSave = false;
             }
 
             if (File.Exists(gameSavePath))

@@ -1,0 +1,72 @@
+﻿<Page x:Class="RandomFights.OnlineFindRoomPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomFights"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="OnlineFindRoomPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Vertical" Margin="5">
+                <!--Left Panel-->
+                <TextBlock Text="Connect to:" Style="{StaticResource TextBlock0}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Text="000.000.00.0"/>
+                    <Button Content="Connect"/>
+                </StackPanel>
+                <TextBlock Text="Search settings:" Style="{StaticResource TextBlock0}"/>
+                <StackPanel>
+                    <RadioButton/>
+                    <RadioButton/>
+                    <RadioButton/>
+                </StackPanel>
+                <Button Content="Search" Name="SearchStartBtn" Click="SearchStartBtn_Click"/>
+            </StackPanel>
+            <StackPanel Margin="5" MinWidth="300">
+                <!--Room List-->
+                <TextBlock Text="Rooms online:" Style="{StaticResource TextBlock0}"/>
+                <ListView Name="ServersListView">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Server Name" Width="150">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ThisServerName}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            
+                            <GridViewColumn Header="Player Number" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ThisServerPlayerNumber}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            
+                            <GridViewColumn Header="Connect" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="✔" Click="ServerConnectButton_Click" Background="Transparent"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            
+                            <GridViewColumn Header="Like" Width="40">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="{Binding ThisServerLike}" Click="ServerLikeButton_Click" Background="Transparent"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </StackPanel>
+        <Button Content="Home" Grid.Column="2" Margin="0,5,5,0" Click="HomeBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Top" Background="#303030" BorderThickness="0" Foreground="White"/>
+    </Grid>
+</Page>

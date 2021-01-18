@@ -19,14 +19,13 @@ namespace RandomFights
     public partial class mainmenu : Page
     {
         string AppLanguage;
-        bool saveIsReal, enableSave, isBetaOn, SingleListVisible, OnlineListVisible;
+        bool saveIsReal, isBetaOn, SingleListVisible, OnlineListVisible;
         int ScreenMode;
-        public mainmenu(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
+        public mainmenu(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
-            enableSave = EnableSave;
             isBetaOn = IsBetaOn;
             ScreenMode = screenMode;
             if(IsBetaOn == true)
@@ -49,27 +48,31 @@ namespace RandomFights
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         private void onlinebtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new onlinesett(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new OnlineCreateRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
+        }
+        private void onlinebtn1_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new OnlineFindRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         private void settingsbtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new settings(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new settings(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         private void helpbtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new help(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         private void singlebtn1_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new SingleGamePage();
+            //((MainWindow)Window.GetWindow(this)).frame0.Content = new SingleGamePage();
         }
 
         private void SingleListBtn_Click(object sender, RoutedEventArgs e)
@@ -126,8 +129,8 @@ namespace RandomFights
                 singlebtn.Content = "Classic";
                 singlebtn1.Content = "Tactic";
                 OnlineListBtn.Content = "Online";
-                onlinebtn.Content = "";
-                onlinebtn1.Content = "";
+                onlinebtn.Content = "Create room";
+                onlinebtn1.Content = "Find room";
                 settingsbtn.Content = "Settings";
                 helpbtn.Content = "Help";
                 exitbtn.Content = "Exit";
@@ -138,8 +141,8 @@ namespace RandomFights
                 singlebtn.Content = "Классическая";
                 singlebtn1.Content = "Тактическая";
                 OnlineListBtn.Content = "Онлайн";
-                onlinebtn.Content = "";
-                onlinebtn1.Content = "";
+                onlinebtn.Content = "Создать комнату";
+                onlinebtn1.Content = "Найти комнату";
                 settingsbtn.Content = "Настройки";
                 helpbtn.Content = "Помощь";
                 exitbtn.Content = "Выход";

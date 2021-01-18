@@ -7,14 +7,13 @@ namespace RandomFights
     {
         string AppLanguage, Name0, Name1;
         int rb0Result, rb1Result, ScreenMode;
-        bool saveIsReal, enableSave, rb0Checked = false, rb1Checked = false, isBetaOn;
+        bool saveIsReal, rb0Checked = false, rb1Checked = false, isBetaOn;
 
         private void loadSaveGameBtn_Click(object sender, RoutedEventArgs e)
         {
             if (saveIsReal == true)
             {
-                enableSave = true;
-                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, enableSave, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
             }
         }
 
@@ -25,16 +24,14 @@ namespace RandomFights
             {
                 Name0 = Name0TB.Text;
                 Name1 = Name1TB.Text;
-                enableSave = false;
-                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, enableSave, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
             }
         }
 
-        public singlesett(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
+        public singlesett(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             saveIsReal = SaveIsReal;
-            enableSave = EnableSave;
             isBetaOn = IsBetaOn;
             AppLanguage = appLanguage;
             ScreenMode = screenMode;
@@ -46,7 +43,7 @@ namespace RandomFights
         }
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         void translation()

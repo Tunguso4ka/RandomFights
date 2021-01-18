@@ -9,7 +9,7 @@ namespace RandomFights
 {
     public partial class single : Page
     {
-        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, enableSave, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned, ConsoleIsTapped;
+        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned, ConsoleIsTapped;
         string AppLanguage, Name0, Name1, time;
         int timeSpeed = 1000, ScreenMode;
         string SavePath = Environment.CurrentDirectory + @"\gameSave.dat";
@@ -56,12 +56,12 @@ namespace RandomFights
 
         private void restartBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         private void CheatCodeInput_TextInput(object sender, TextCompositionEventArgs e)
@@ -73,7 +73,7 @@ namespace RandomFights
         {
             if(CCSM[0] == "help")
             {
-                CheatCodeText.Text = "\nHelp:\nMaxHP0, HP0, AddHP0, Shield0, Damage0, AdditDamage0, Level0, XP0, Spell0, Poisoning0, Console\n" + CheatCodeText.Text;
+                CheatCodeText.Text = "\nHelp:\nMaxHP0 (int), HP0 (int), AddHP0 (int), Shield0 (int), Damage0 (int), AdditDamage0 (int), Level0 (int), XP0 (int), Spell0 (int), Poisoning0 (int), Console (Clear/Erase/Close)\n" + CheatCodeText.Text;
             }
 
             else if (CCSM[0] == "Console" || CCSM[0] == "console")
@@ -82,7 +82,7 @@ namespace RandomFights
                 {
                     try
                     {
-                        if(CCSM[1] == "Clear" || CCSM[1] == "clear")
+                        if(CCSM[1] == "Clear" || CCSM[1] == "clear" || CCSM[1] == "Erase" || CCSM[1] == "erase")
                         {
                             CheatCodeText.Text = "Console cleared.";
                         }
@@ -482,20 +482,19 @@ namespace RandomFights
             }
         }
 
-        public single(string appLanguage, string name0, string name1, bool SaveIsReal, bool EnableSave, int rb0Result, int rb1Result, bool IsBetaOn, int screenMode)
+        public single(string appLanguage, string name0, string name1, bool SaveIsReal, int rb0Result, int rb1Result, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             Name0 = name0;
             Name1 = name1;
             isBetaOn = IsBetaOn;
             saveIsReal = SaveIsReal;
-            enableSave = EnableSave;
             AppLanguage = appLanguage;
             Spell0 = rb0Result;
             Spell1 = rb1Result;
             ScreenMode = screenMode;
             translation();
-            if (saveIsReal == true && enableSave == true)
+            if (saveIsReal == true)
             {
                 ArrIntoInt();
             }

@@ -9,14 +9,13 @@ namespace RandomFights
     public partial class help : Page
     {
         string AppLanguage;
-        bool saveIsReal, enableSave, isBetaOn;
+        bool SaveIsReal, isBetaOn;
         int ScreenMode;
-        public help(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
+        public help(string appLanguage, bool saveIsReal, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
-            saveIsReal = SaveIsReal;
-            enableSave = EnableSave;
+            SaveIsReal = saveIsReal;
             isBetaOn = IsBetaOn;
             ScreenMode = screenMode;
             setText();
@@ -25,7 +24,7 @@ namespace RandomFights
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, SaveIsReal, isBetaOn, ScreenMode);
         }
 
         void setText()

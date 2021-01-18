@@ -11,15 +11,14 @@ namespace RandomFights
     public partial class settings : Page
     {
         string AppLanguage;
-        bool saveIsReal, deleteSave = false, enableSave = false, isBetaOn;
+        bool saveIsReal, deleteSave = false, isBetaOn;
         int ScreenMode;
         string settPath = Environment.CurrentDirectory + "/settings.dat", savePath = Environment.CurrentDirectory + "/gameSave.dat";
-        public settings(string appLanguage, bool SaveIsReal, bool EnableSave, bool IsBetaOn, int screenMode)
+        public settings(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
-            enableSave = EnableSave;
             isBetaOn = IsBetaOn;
             ScreenMode = screenMode;
             try
@@ -31,15 +30,6 @@ namespace RandomFights
                 else
                 {
                     RB1.IsChecked = true;
-                }
-
-                if (enableSave == true)
-                {
-                    EnableSavesCB.IsChecked = true;
-                }
-                else
-                {
-                    EnableSavesCB.IsChecked = false;
                 }
 
                 if (isBetaOn == true)
@@ -83,7 +73,7 @@ namespace RandomFights
 
         private void homeBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, enableSave, isBetaOn, ScreenMode);
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         void ScreenChange()
@@ -120,15 +110,6 @@ namespace RandomFights
                 File.Delete(settPath);
             }
             BinaryWriter binaryWriter = new BinaryWriter(File.Open(settPath, FileMode.Create));
-
-            if (EnableSavesCB.IsChecked == true)
-            {
-                enableSave = true;
-            }
-            else
-            {
-                enableSave = false;
-            }
 
             if (EnableBetaCB.IsChecked == true)
             {
@@ -172,7 +153,6 @@ namespace RandomFights
             ScreenChange();
 
             binaryWriter.Write(AppLanguage);
-            binaryWriter.Write(enableSave);
             binaryWriter.Write(isBetaOn);
             binaryWriter.Write(ScreenMode);
             binaryWriter.Dispose();
@@ -190,7 +170,6 @@ namespace RandomFights
                 saveBtn.Content = "Save.";
                 LangTB.Text = "Language: ";
                 DsTb.Text = "Delete saves: ";
-                EsTb.Text = "Enable saves: ";
                 EbTb.Text = "Enable BETA:";
                 SmTb.Text = "Screen mode:";
                 RB2.Content = "Fullscreen";
@@ -203,7 +182,6 @@ namespace RandomFights
                 saveBtn.Content = "Сохранить.";
                 LangTB.Text = "Язык: ";
                 DsTb.Text = "Удалить сохранение: ";
-                EsTb.Text = "Активировать сохранения: ";
                 EbTb.Text = "Активировать БЕТА:";
                 SmTb.Text = "Режим экрана:";
                 RB2.Content = "Полноэкранный";

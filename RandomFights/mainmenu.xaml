@@ -35,7 +35,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Make room" Name="onlinebtn" Foreground="White" Background="Transparent" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
-                    <Button Content="Connect" Name="onlinebtn1" Foreground="White" Background="Transparent" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Connect" Name="onlinebtn1" Foreground="White" Background="Transparent" Click="onlinebtn1_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
                 </StackPanel>
                 <TextBlock Height="40"/>
                 <TextBlock Height="30"/>
@@ -51,7 +51,7 @@
             </StackPanel>
         </Grid>
         <Label Content="Random Fights" Margin="10,10,0,0" VerticalAlignment="Top" Height="150" Foreground="White" FontSize="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="RFText" HorizontalAlignment="Left" Width="620"/>
-        <TextBlock Text="Version: 0.8" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
+        <TextBlock Text="Version: 0.7.1" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
 
     </Grid>
 </Page>
