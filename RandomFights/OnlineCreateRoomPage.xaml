@@ -9,6 +9,53 @@
       Title="OnlineCreateRoomPage">
 
     <Grid>
+        <TextBlock Text="BETA" Foreground="#FFFF6E6E"/>
+        <StackPanel Margin="5">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center">
+                <TextBox Text="000.000.00.0" IsReadOnly="True"/>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5">
+                    <TextBlock Text="Who can enter:" Style="{StaticResource TextBlock0}"/>
+                    <RadioButton Content="Open."/>
+                    <RadioButton Content="Private."/>
+                    <RadioButton Content="Only friends."/>
+                </StackPanel>
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5">
+                    <TextBlock Text="Aproved spells:" Style="{StaticResource TextBlock0}"/>
+                    <CheckBox Content="Grenade" Name="AprSpellsCheckBoxGrenade"/>
+                    <CheckBox Content="Poison" Name="AprSpellsCheckBoxPoison"/>
+                    <CheckBox Content="Super HP Regeneration" Name="AprSpellsCheckBoxSuperHPRegeneration"/>
+                    <CheckBox Content="Super Strengh" Name="AprSpellsCheckBoxSuperStrengh"/>
+                    <CheckBox Content="Shield" Name="AprSpellsCheckBoxShield"/>
+                    <CheckBox Content="XP Increaser" Name="AprSpellsCheckBoxXPIncreaser"/>
+                    <TextBlock/>
+                    <CheckBox Content="All" Name="AprSpellsCheckBoxAll" Checked="AprSpellsCheckBoxAll_Checked"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Orientation="Horizontal">
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5">
+                    <TextBlock Text="Your Charater:" Style="{StaticResource TextBlock0}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Your name:" Style="{StaticResource TextBlock0}"/>
+                        <TextBox MinWidth="100"/>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5">
+                        <TextBlock Text="Spells:" Style="{StaticResource TextBlock0}"/>
+                        <RadioButton Content="Grenade" Name="SpellRadioButtonGrenade"/>
+                        <RadioButton Content="Poison" Name="SpellRadioButtonPoison"/>
+                        <RadioButton Content="Super HP Regeneration" Name="SpellRadioButtonSuperHPRegeneration"/>
+                        <RadioButton Content="Super Strengh" Name="SpellRadioButtonSuperStrengh"/>
+                        <RadioButton Content="Shield" Name="SpellRadioButtonShield"/>
+                        <RadioButton Content="XP Increaser" Name="SpellRadioButtonXPIncreaser"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Button Content="Cancel"/>
+                <Button Content="Create"/>
+            </StackPanel>
+        </StackPanel>
         <Button Content="Home" Grid.Column="2" Margin="0,5,5,0" Click="HomeBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Top" Background="#303030" BorderThickness="0" Foreground="White"/>
     </Grid>
 </Page>

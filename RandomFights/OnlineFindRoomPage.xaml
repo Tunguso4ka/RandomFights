@@ -9,6 +9,7 @@
       Title="OnlineFindRoomPage">
 
     <Grid>
+        <TextBlock Text="BETA" Foreground="IndianRed"/>
         <StackPanel Orientation="Horizontal">
             <StackPanel Orientation="Vertical" Margin="5">
                 <!--Left Panel-->
@@ -19,13 +20,20 @@
                 </StackPanel>
                 <TextBlock Text="Search settings:" Style="{StaticResource TextBlock0}"/>
                 <StackPanel>
-                    <RadioButton/>
-                    <RadioButton/>
-                    <RadioButton/>
+                    <TextBlock Text="Rooms:" Style="{StaticResource TextBlock0}"/>
+                    <RadioButton Content="Only liked rooms."/>
+                    <RadioButton Content="Only friends rooms."/>
+                    <RadioButton Content="Only empty rooms."/>
+                    <RadioButton Content="All rooms."/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Protection:" Style="{StaticResource TextBlock0}"/>
+                    <RadioButton Content="Only official servers."/>
+                    <RadioButton Content="All servers."/>
                 </StackPanel>
                 <Button Content="Search" Name="SearchStartBtn" Click="SearchStartBtn_Click"/>
             </StackPanel>
-            <StackPanel Margin="5" MinWidth="300">
+            <StackPanel Margin="5" MinWidth="500">
                 <!--Room List-->
                 <TextBlock Text="Rooms online:" Style="{StaticResource TextBlock0}"/>
                 <ListView Name="ServersListView">

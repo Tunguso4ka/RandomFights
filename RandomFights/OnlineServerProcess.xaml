@@ -1,0 +1,40 @@
+﻿<Page x:Class="RandomFights.OnlineServerProcess"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RandomFights"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="OnlineServerProcess">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Name0" Style="{StaticResource TextBlock0}" Name="PlayerName0Output"/>
+                <Separator Margin="10,0"/>
+                <TextBlock Text="HP0" Style="{StaticResource TextBlock0}" Name="PlayerHP0Output"/>
+                <Separator Margin="5,0"/>
+                <TextBlock Text="Lvl0" Style="{StaticResource TextBlock0}" Name="PlayerLVL0Output"/>
+                <Separator Margin="5,0"/>
+                <TextBlock Text="Spell0" Style="{StaticResource TextBlock0}" Name="PlayerSpell0Output"/>
+                <Separator Margin="5,0"/>
+                <TextBlock Text="00:00" Width="50" Style="{StaticResource TextBlock0}" Name="TimeOutput"/>
+                <Separator Margin="5,0"/>
+                <TextBlock Text="Spell1" Style="{StaticResource TextBlock0}" Name="PlayerSpell1Output"/>
+                <Separator Margin="5,0"/>
+                <TextBlock Text="Lvl1" Style="{StaticResource TextBlock0}" Name="PlayerLVL1Output"/>
+                <Separator Margin="5,0"/>
+                <TextBlock Text="HP1" Style="{StaticResource TextBlock0}" Name="PlayerHP1Output"/>
+                <Separator Margin="10,0"/>
+                <TextBlock Text="Name1" Style="{StaticResource TextBlock0}" Name="PlayerName1Output"/>
+            </StackPanel>
+            <Separator Margin="0,15"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="TextBlock0" Style="{StaticResource TextBlock0}" Name="GameProcessPlayer0Output"/>
+                <Separator Margin="35,0"/>
+                <TextBlock Text="TextBlock1" Style="{StaticResource TextBlock0}" Name="GameProcessPlayer1Output"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

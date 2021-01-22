@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -26,6 +27,11 @@ namespace RandomFights
         void FindOnlineServers()
         {
 
+        }
+
+        void ConnectToServer()
+        {
+            
         }
 
         private void ServersList()
