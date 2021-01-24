@@ -71,36 +71,12 @@ namespace RandomFights
             deleteSave = true;
         }
 
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
+        private void SaveAndRestartBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-        }
-
-        void ScreenChange()
-        {
-            if (ScreenMode == 0)
-            {
-                ((MainWindow)Window.GetWindow(this)).Visibility = Visibility.Collapsed;
-                ((MainWindow)Window.GetWindow(this)).WindowStyle = WindowStyle.None;
-                ((MainWindow)Window.GetWindow(this)).ResizeMode = ResizeMode.NoResize;
-                ((MainWindow)Window.GetWindow(this)).WindowState = WindowState.Maximized;
-                ((MainWindow)Window.GetWindow(this)).Topmost = true;
-                ((MainWindow)Window.GetWindow(this)).Visibility = Visibility.Visible;
-            }
-            else if (ScreenMode == 1)
-            {
-                ((MainWindow)Window.GetWindow(this)).WindowStyle = WindowStyle.SingleBorderWindow;
-                ((MainWindow)Window.GetWindow(this)).ResizeMode = ResizeMode.CanResize;
-                ((MainWindow)Window.GetWindow(this)).Topmost = false;
-                ((MainWindow)Window.GetWindow(this)).WindowStyle = WindowStyle.None;
-                ((MainWindow)Window.GetWindow(this)).WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                ((MainWindow)Window.GetWindow(this)).WindowStyle = WindowStyle.SingleBorderWindow;
-                ((MainWindow)Window.GetWindow(this)).ResizeMode = ResizeMode.CanResize;
-                ((MainWindow)Window.GetWindow(this)).Topmost = false;
-            }
+            settSave();
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            ((MainWindow)Window.GetWindow(this)).Close();
         }
 
         void settSave()
@@ -150,8 +126,6 @@ namespace RandomFights
                 ScreenMode = 2;
             }
 
-            ScreenChange();
-
             binaryWriter.Write(AppLanguage);
             binaryWriter.Write(isBetaOn);
             binaryWriter.Write(ScreenMode);
@@ -166,8 +140,8 @@ namespace RandomFights
         {
             if (AppLanguage == "eng")
             {
-                homeBtn.Content = "Home.";
-                saveBtn.Content = "Save.";
+                SaveBtn.Content = "Save.";
+                SaveAndRestartBtn.Content = "Save and restart.";
                 LangTB.Text = "Language: ";
                 DsTb.Text = "Delete saves: ";
                 EbTb.Text = "Enable BETA:";
@@ -178,8 +152,8 @@ namespace RandomFights
             }
             else if (AppLanguage == "ru")
             {
-                homeBtn.Content = "Назад.";
-                saveBtn.Content = "Сохранить.";
+                SaveBtn.Content = "Сохранить.";
+                SaveAndRestartBtn.Content = "Сохранить и перезагрузить.";
                 LangTB.Text = "Язык: ";
                 DsTb.Text = "Удалить сохранение: ";
                 EbTb.Text = "Активировать БЕТА:";

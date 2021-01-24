@@ -13,11 +13,11 @@
     <DelaySign>false</DelaySign>
     <StartupObject>RandomFights.App</StartupObject>
     <ApplicationIcon>img\randomfightslogo.ico</ApplicationIcon>
-    <AssemblyVersion>0.7.1.1</AssemblyVersion>
+    <AssemblyVersion>0.7.2.0</AssemblyVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NoWin32Manifest>true</NoWin32Manifest>
     <PackageProjectUrl>https://github.com/Tunguso4ka/RandomFights</PackageProjectUrl>
-    <FileVersion>0.7.1.1</FileVersion>
+    <FileVersion>0.7.2.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

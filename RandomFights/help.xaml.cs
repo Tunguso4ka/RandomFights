@@ -9,22 +9,11 @@ namespace RandomFights
     public partial class help : Page
     {
         string AppLanguage;
-        bool SaveIsReal, isBetaOn;
-        int ScreenMode;
-        public help(string appLanguage, bool saveIsReal, bool IsBetaOn, int screenMode)
+        public help(string appLanguage)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
-            SaveIsReal = saveIsReal;
-            isBetaOn = IsBetaOn;
-            ScreenMode = screenMode;
             setText();
-            translate();
-        }
-
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, SaveIsReal, isBetaOn, ScreenMode);
         }
 
         void setText()
@@ -40,18 +29,6 @@ namespace RandomFights
             else
             {
                 TB.Text = "Ошибка " + AppLanguage;
-            }
-        }
-
-        void translate()
-        {
-            if(AppLanguage == "eng")
-            {
-                homeBtn.Content = "Home.";
-            }
-            else if(AppLanguage == "ru")
-            {
-                homeBtn.Content = "Назад.";
             }
         }
     }

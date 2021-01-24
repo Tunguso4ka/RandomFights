@@ -13,6 +13,8 @@ namespace RandomFights
         bool saveIsReal, isBetaOn, RFUIsConected, RFUIsLoged;
         int ScreenMode;
         string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat";
+        mainmenu MainMenu;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +29,14 @@ namespace RandomFights
                 ScreenMode = 2;
             }
             ScreenChange();
-            frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
+            MainMenu = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
+            frame0.Content = MainMenu;
         }
+        private void HomeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            frame0.Content = MainMenu;
+        }
+
         void searchSettings()
         {
             if(File.Exists(settPath))

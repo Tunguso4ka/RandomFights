@@ -10,5 +10,8 @@
         Title="Random Fights" Height="720" Width="1280">
     <Grid>
         <Frame Content="Frame" Name="frame0" NavigationUIVisibility="Hidden" Margin="5,5,5,5"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5">
+            <Button Content="Home" Name="HomeBtn" Click="HomeBtn_Click" Height="50" Width="50"/>
+        </StackPanel>
     </Grid>
 </Window>

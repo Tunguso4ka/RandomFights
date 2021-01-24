@@ -54,16 +54,6 @@ namespace RandomFights
             }
         }
 
-        private void restartBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new singlesett(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-        }
-
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-        }
-
         private void CheatCodeInput_TextInput(object sender, TextCompositionEventArgs e)
         {
             
@@ -473,12 +463,12 @@ namespace RandomFights
             if(gameIsPaused == false)
             {
                 gameIsPaused = true;
-                pauseBtn.Content = "Pause";
+                pauseBtn.Content = "⏩";
             }
             else if (gameIsPaused == true)
             {
                 gameIsPaused = false;
-                pauseBtn.Content = "Paused";
+                pauseBtn.Content = "⏸";
             }
         }
 
@@ -493,7 +483,6 @@ namespace RandomFights
             Spell0 = rb0Result;
             Spell1 = rb1Result;
             ScreenMode = screenMode;
-            translation();
             if (saveIsReal == true)
             {
                 ArrIntoInt();
@@ -1068,23 +1057,6 @@ namespace RandomFights
             binaryWriter.Write(Minute);
             binaryWriter.Write(Second);
             binaryWriter.Dispose();
-        }
-        void translation()
-        {
-            if(AppLanguage == "ru")
-            {
-                homeBtn.Content = "Домой";
-                pauseBtn.Content = "Пауза";
-                restartBtn.Content = "Перезапуск";
-                skipBtn.Content = "Пропустить";
-            }
-            else if (AppLanguage == "eng")
-            {
-                homeBtn.Content = "Home";
-                pauseBtn.Content = "Pause";
-                restartBtn.Content = "Restart";
-                skipBtn.Content = "Skip";
-            }
         }
     }
 }

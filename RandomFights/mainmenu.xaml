@@ -20,22 +20,22 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel VerticalAlignment="Center">
-                <Button Content="Single" Name="SingleListBtn" Foreground="White" Background="Transparent" Click="SingleListBtn_Click" Height="50" VerticalAlignment="Bottom"/>
-                <Button Content="Online" Name="OnlineListBtn" Foreground="White" Background="Transparent" Click="OnlineListBtn_Click" Height="50" VerticalAlignment="Bottom"/>
-                <Button Content="Settings" x:Name="settingsbtn" Foreground="White" Background="Transparent" Click="settingsbtn_Click" Height="40"/>
+                <Button Content="Single" Name="SingleListBtn" Click="SingleListBtn_Click" Height="50" VerticalAlignment="Bottom"/>
+                <Button Content="Online" Name="OnlineListBtn" Click="OnlineListBtn_Click" Height="50" VerticalAlignment="Bottom"/>
+                <Button Content="Settings" x:Name="settingsbtn" Click="settingsbtn_Click" Height="40"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Help" x:Name="helpbtn" Foreground="White" Background="Transparent" Click="helpbtn_Click" Height="30" Width="75"/>
-                    <Button Content="Exit" x:Name="exitbtn" Foreground="White" Background="Transparent" Click="exitbtn_Click" Height="30" Width="75"/>
+                    <Button Content="Help" x:Name="helpbtn" Click="helpbtn_Click" Height="30" Width="75"/>
+                    <Button Content="Exit" x:Name="exitbtn" Click="exitbtn_Click" Height="30" Width="75"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" Grid.Column="1">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Classic" Name="singlebtn" Foreground="White" Background="Transparent" Click="singlebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
-                    <Button Content="Tactic" Name="singlebtn1" Foreground="White" Background="Transparent" Click="singlebtn1_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Classic" Name="singlebtn" Click="singlebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Tactic" Name="singlebtn1" Click="singlebtn1_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Make room" Name="onlinebtn" Foreground="White" Background="Transparent" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
-                    <Button Content="Connect" Name="onlinebtn1" Foreground="White" Background="Transparent" Click="onlinebtn1_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Make room" Name="onlinebtn" Click="onlinebtn_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
+                    <Button Content="Connect" Name="onlinebtn1" Click="onlinebtn1_Click" Height="50" VerticalAlignment="Bottom" Width="75"/>
                 </StackPanel>
                 <TextBlock Height="40"/>
                 <TextBlock Height="30"/>

@@ -9,35 +9,39 @@
       Title="single">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="8*"></RowDefinition>
-            <RowDefinition Height="9*"/>
-            <RowDefinition Height="127*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="63*"></ColumnDefinition>
-            <ColumnDefinition Width="2*"></ColumnDefinition>
-            <ColumnDefinition Width="63*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Button Content="Console" Grid.Column="0" Margin="2,0,0,0" Name="ConsoleBtn" HorizontalAlignment="Left" Width="63" Click="ConsoleBtn_Click" Background="#303030" BorderThickness="0" Foreground="White" Height="34" VerticalAlignment="Bottom" Visibility="Hidden"/>
-        <TextBlock Grid.Row="2" Text="&lt;GameStart&gt;" TextWrapping="Wrap" Foreground="White" Name="TB0" Margin="10,10,10,10" TextAlignment="Right" Background="#303030"/>
-        <TextBlock Grid.Row="2" Text="&lt;GameStart&gt;" TextWrapping="Wrap" Grid.Column="2" Foreground="White" Name="TB1" Margin="10,10,10,10" Background="#303030"/>
-        <TextBlock Text="Name0" TextWrapping="Wrap" Foreground="White" Name="Name0TB" Margin="0,0,250,0" HorizontalAlignment="Right" Width="310" Height="34" VerticalAlignment="Bottom" TextAlignment="Right" Background="#303030"/>
-        <TextBlock Margin="0,0,130,0" Text="HP0" TextWrapping="Wrap" Foreground="White" Name="HP0TB" HorizontalAlignment="Right" Width="120" TextAlignment="Right" Background="#303030" Height="34" VerticalAlignment="Bottom"/>
-        <TextBlock Margin="0,0,130,0" Text="Effect0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Foreground="White" Name="Effect0TB" Grid.Row="1" HorizontalAlignment="Right" Width="120" TextAlignment="Right" Background="#303030"/>
-        <TextBlock Text="Level0" TextWrapping="Wrap" Foreground="White" Name="Lvl0TB" HorizontalAlignment="Right" Width="130" TextAlignment="Right" Background="#303030" Height="34" VerticalAlignment="Bottom"/>
-        <TextBlock Text="Minute" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Foreground="White" Name="MinuteTB" Grid.Row="1" HorizontalAlignment="Right" Width="130" TextAlignment="Right" Background="#303030"/>
-        <TextBlock HorizontalAlignment="Left" Text="Level0" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="34" Width="110" Foreground="White" Grid.Column="2" Name="Lvl1TB" Background="#303030"/>
-        <TextBlock HorizontalAlignment="Left" Text="Second" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="110" Foreground="White" Grid.Column="2" Name="SecondsTB" Grid.Row="1" Background="#303030"/>
-        <TextBlock HorizontalAlignment="Left" Margin="110,0,0,0" Text="HP1" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="34" Width="120" Foreground="White" Grid.Column="2" Name="HP1TB" Background="#303030"/>
-        <TextBlock HorizontalAlignment="Left" Margin="110,0,0,0" Text="Effect1" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="120" Foreground="White" Grid.Column="2" Name="Effect1TB" Grid.Row="1" Background="#303030"/>
-        <TextBlock HorizontalAlignment="Left" Margin="230,0,0,0" Text="Name1" TextWrapping="Wrap" Width="310" Foreground="White" Grid.Column="2" Name="Name1TB" Background="#303030" Height="34" VerticalAlignment="Bottom"/>
-        <Button Content="Home" Grid.Column="2" Margin="0,0,5,0" Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Bottom" Background="#303030" BorderThickness="0" Foreground="White"/>
-        <Button Content="Restart" Grid.Column="2" Margin="0,0,5,0" Name="restartBtn" HorizontalAlignment="Right" Width="35" Click="restartBtn_Click" Grid.Row="1" Height="35" VerticalAlignment="Top" Background="#303030" BorderThickness="0" Foreground="White"/>
-        <Button Content="Pause" Grid.Column="2" Margin="0,0,40,0" Name="pauseBtn" Click="pauseBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Bottom" Background="#303030" BorderThickness="0" Foreground="White"/>
-        <Button Content="Skip" Grid.Column="2" Margin="0,0,40,0" Name="skipBtn" HorizontalAlignment="Right" Width="35" Grid.Row="1" Height="35" VerticalAlignment="Top" Click="skipBtn_Click" Background="#303030" BorderThickness="0" Foreground="White"/>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Button Content="⌨" Name="ConsoleBtn" HorizontalAlignment="Left" Width="65" Click="ConsoleBtn_Click"  Height="35" VerticalAlignment="Bottom" Visibility="Hidden" Margin="10,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Name0" Foreground="White" Name="Name0TB"/>
+                    <Separator Margin="5,0"/>
+                    <TextBlock Text="HP0" Foreground="White" Name="HP0TB"/>
+                    <Separator Margin="5,0"/>
+                    <TextBlock Text="Effect0" Foreground="White" Name="Effect0TB"/>
+                    <Separator Margin="5,0"/>
+                    <TextBlock Text="Level0" Foreground="White" Name="Lvl0TB"/>
+                    <Separator Margin="15,0"/>
+                    <TextBlock Text="Minute" Foreground="White" Name="MinuteTB"/>
+                    <TextBlock Text="Second" Foreground="White" Name="SecondsTB"/>
+                    <Separator Margin="15,0"/>
+                    <TextBlock Text="Level0" Foreground="White" Name="Lvl1TB"/>
+                    <Separator Margin="5,0"/>
+                    <TextBlock Text="Effect1" Foreground="White" Name="Effect1TB"/>
+                    <Separator Margin="5,0"/>
+                    <TextBlock Text="HP1" Foreground="White" Name="HP1TB"/>
+                    <Separator Margin="5,0"/>
+                    <TextBlock Text="Name1" Foreground="White" Name="Name1TB"/>
+                </StackPanel>
+                <Button Content="⏸" Name="pauseBtn" Click="pauseBtn_Click" Width="35" Height="35" Margin="10,0"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="&lt;GameStart&gt;" TextWrapping="Wrap" Foreground="White" Name="TB0" TextAlignment="Right" Background="#303030"/>
+                <Separator Margin="10,0"/>
+                <TextBlock Text="&lt;GameStart&gt;" TextWrapping="Wrap" Foreground="White" Name="TB1" Background="#303030"/>
+            </StackPanel>
+        </StackPanel>
 
-        <Grid Grid.Row="2" HorizontalAlignment="Left" Width="610" Visibility="Hidden" Name="CheatCodeConsoleGrid" Margin="0,250,0,0" Height="365" VerticalAlignment="Bottom">
+        <Grid Grid.Row="2" HorizontalAlignment="Left" Width="610" Visibility="Collapsed" Name="CheatCodeConsoleGrid" Margin="0,250,0,0" Height="365" VerticalAlignment="Bottom">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="25"/>

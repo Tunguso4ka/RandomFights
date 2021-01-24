@@ -9,31 +9,33 @@
       Title="settings">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="10*"></ColumnDefinition>
-
-        </Grid.ColumnDefinitions>
-        <StackPanel>
-            <TextBlock Text="Language:" TextWrapping="Wrap" Foreground="White" Name="LangTB" Height="30"/>
-            <TextBlock Text="Delete saves:" TextWrapping="Wrap" Foreground="White" Name="DsTb" Height="30"/>
-            <TextBlock Text="Enable BETA:" TextWrapping="Wrap" Foreground="White" x:Name="EbTb" Height="30"/>
-            <TextBlock Text="Screen mode:" Foreground="White" Name="SmTb" Height="30"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1">
-            <StackPanel Orientation="Horizontal" Height="30">
-                <RadioButton Content="Russian" HorizontalAlignment="Left" Foreground="White" x:Name="RB0"/>
-                <RadioButton Content="English" HorizontalAlignment="Left" Foreground="White" x:Name="RB1"/>
+        <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Top" Text=""/>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <TextBlock Text="Language:" TextWrapping="Wrap" Foreground="White" Name="LangTB" Height="30"/>
+                <TextBlock Text="Delete saves:" TextWrapping="Wrap" Foreground="White" Name="DsTb" Height="30"/>
+                <TextBlock Text="Enable BETA:" TextWrapping="Wrap" Foreground="White" x:Name="EbTb" Height="30"/>
+                <TextBlock Text="Screen mode:" Foreground="White" Name="SmTb" Height="30"/>
             </StackPanel>
-            <CheckBox HorizontalAlignment="Left" Name="DeleteSavesCB" Checked="DeleteSavesCB_Checked" Height="30"/>
-            <CheckBox HorizontalAlignment="Left" x:Name="EnableBetaCB" Height="30"/>
-            <StackPanel Orientation="Horizontal" Height="30">
-                <RadioButton Content="FullScreen" HorizontalAlignment="Left" Foreground="White" x:Name="RB2"/>
-                <RadioButton Content="Borderless" HorizontalAlignment="Left" Foreground="White" x:Name="RB3"/>
-                <RadioButton Content="Window" HorizontalAlignment="Left" Foreground="White" x:Name="RB4"/>
+            <Separator Margin="5,0"/>
+            <StackPanel Grid.Column="1">
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <RadioButton Content="Russian" HorizontalAlignment="Left" Foreground="White" x:Name="RB0"/>
+                    <RadioButton Content="English" HorizontalAlignment="Left" Foreground="White" x:Name="RB1"/>
+                </StackPanel>
+                <CheckBox HorizontalAlignment="Left" Name="DeleteSavesCB" Checked="DeleteSavesCB_Checked" Height="30"/>
+                <CheckBox HorizontalAlignment="Left" x:Name="EnableBetaCB" Height="30"/>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <RadioButton Content="FullScreen" HorizontalAlignment="Left" Foreground="White" x:Name="RB2"/>
+                    <RadioButton Content="Borderless" HorizontalAlignment="Left" Foreground="White" x:Name="RB3"/>
+                    <RadioButton Content="Window" HorizontalAlignment="Left" Foreground="White" x:Name="RB4"/>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-        <Button Content="Save" Margin="0,0,35,0" VerticalAlignment="Top" Height="35" x:Name="saveBtn" HorizontalAlignment="Right" Width="35" Click="saveBtn_Click" Background="#303030" BorderThickness="0" Foreground="White" Grid.Column="1"/>
-        <Button Content="Home" VerticalAlignment="Top" Height="35" x:Name="homeBtn" Click="homeBtn_Click" HorizontalAlignment="Right" Width="35" Background="#303030" BorderThickness="0" Foreground="White" Grid.Column="1"/>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Orientation="Horizontal">
+            <Button Content="Save" Height="35" x:Name="SaveBtn" Click="saveBtn_Click"/>
+            <Separator Margin="5,0"/>
+            <Button Content="Save and restart" Height="35" x:Name="SaveAndRestartBtn" Click="SaveAndRestartBtn_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

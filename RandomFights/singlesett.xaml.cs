@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace RandomFights
@@ -7,7 +8,22 @@ namespace RandomFights
     {
         string AppLanguage, Name0, Name1;
         int rb0Result, rb1Result, ScreenMode;
+        int NameIndex;
         bool saveIsReal, rb0Checked = false, rb1Checked = false, isBetaOn;
+        string[] Names = { "Sergey", "Kira", "Christina", "Elena", "Eva", "Katya", "Maria", "Maggie", "Penny", "Saya", "Princess", "Abby", "Laila", "Sadie", "Olivia", "Starlight", "Talla"};
+        Random Rand = new Random();
+
+        private void RandomName0Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NameIndex = Rand.Next(Names.Length);
+            Name0TB.Text = Names[NameIndex];
+        }
+
+        private void RandomName1Btn_Click(object sender, RoutedEventArgs e)
+        {
+            NameIndex = Rand.Next(Names.Length);
+            Name1TB.Text = Names[NameIndex];
+        }
 
         private void loadSaveGameBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +66,6 @@ namespace RandomFights
         {
             if (AppLanguage == "ru")
             {
-                homeBtn.Content = "Домой.";
                 nextBtn.Content = "Следущее.";
                 nameText.Text = "Имена игроков:";
                 loadSaveGameText.Text = "Начать с заранее сохраненной игры?";
@@ -70,7 +85,6 @@ namespace RandomFights
             }
             else if (AppLanguage == "eng")
             {
-                homeBtn.Content = "Home.";
                 nextBtn.Content = "Next.";
                 nameText.Text = "Player names:";
                 loadSaveGameText.Text = "Start from save?";
