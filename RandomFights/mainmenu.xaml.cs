@@ -40,10 +40,10 @@ namespace RandomFights
             }
             else
             {
-                OnlineListBtn.Visibility = Visibility.Hidden;
+                OnlineListBtn.Visibility = Visibility.Collapsed;
             }
-            onlinebtn.Visibility = Visibility.Hidden;
-            onlinebtn1.Visibility = Visibility.Hidden;
+            onlinebtn.Visibility = Visibility.Collapsed;
+            onlinebtn1.Visibility = Visibility.Collapsed;
             singlebtn.Visibility = Visibility.Hidden;
             singlebtn1.Visibility = Visibility.Hidden;
 
@@ -106,8 +106,16 @@ namespace RandomFights
                 {
                     singlebtn1.Visibility = Visibility.Visible;
                 }
-                onlinebtn.Visibility = Visibility.Hidden;
-                onlinebtn1.Visibility = Visibility.Hidden;
+                if (OnlineListVisible == true)
+                {
+                    onlinebtn.Visibility = Visibility.Hidden;
+                    onlinebtn1.Visibility = Visibility.Hidden;
+                }
+                else
+                {
+                    onlinebtn.Visibility = Visibility.Collapsed;
+                    onlinebtn1.Visibility = Visibility.Collapsed;
+                }
                 SingleListVisible = true;
                 OnlineListVisible = false;
             }
