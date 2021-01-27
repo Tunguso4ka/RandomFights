@@ -5,10 +5,50 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RandomFights"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="720" d:DesignWidth="1280"
       Title="ControlModeSettingsPage">
 
     <Grid>
-        
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Start from save:" Style="{StaticResource TextBlock0}" Height="30"/>
+                <Separator Margin="5,0"/>
+                <Button Content="OK" Height="30" Width="30" Name="StartFromSaveBtn" Click="StartFromSaveBtn_Click"/>
+            </StackPanel>
+            <Separator Margin="0,5"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Choose names:" Style="{StaticResource TextBlock0}" Height="30"/>
+                <Separator Margin="5,0"/>
+                <TextBox Width="90" Height="20" Name="NameTxtBx0"/>
+                <Button Width="20" Height="20" Content="↻" Name="RandomNameBtn0" Click="RandomNameBtn0_Click"/>
+                <Separator Margin="5,0"/>
+                <TextBox Width="90" Height="20" Name="NameTxtBx1"/>
+                <Button Width="20" Height="20" Content="↻" Name="RandomNameBtn1" Click="RandomNameBtn1_Click"/>
+            </StackPanel>
+            <Separator Margin="0,5"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Choose spells:" Style="{StaticResource TextBlock0}" Height="30"/>
+                <Separator Margin="5,0"/>
+                <StackPanel>
+                    <RadioButton Content="Grenade" Name="SpellRdBtn00"/>
+                    <RadioButton Content="Poison" Name="SpellRdBtn01"/>
+                    <RadioButton Content="Super HP Regen" Name="SpellRdBtn02"/>
+                    <RadioButton Content="Additional damage" Name="SpellRdBtn03"/>
+                    <RadioButton Content="Shield" Name="SpellRdBtn04"/>
+                    <RadioButton Content="XP Power up" Name="SpellRdBtn05"/>
+                </StackPanel>
+                <Separator Margin="10,0"/>
+                <StackPanel>
+                    <RadioButton Content="Grenade" Name="SpellRdBtn10"/>
+                    <RadioButton Content="Poison" Name="SpellRdBtn11"/>
+                    <RadioButton Content="Super HP Regen" Name="SpellRdBtn12"/>
+                    <RadioButton Content="Additional damage" Name="SpellRdBtn13"/>
+                    <RadioButton Content="Shield" Name="SpellRdBtn14"/>
+                    <RadioButton Content="XP Power up" Name="SpellRdBtn15"/>
+                </StackPanel>
+            </StackPanel>
+            <Separator Margin="0,5"/>
+        </StackPanel>
+        <Button Content="Next" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="30" Name="NextBtn" Click="NextBtn_Click"/>
     </Grid>
 </Page>

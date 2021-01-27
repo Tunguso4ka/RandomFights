@@ -36,13 +36,13 @@
             <StackPanel Margin="5" MinWidth="500">
                 <!--Room List-->
                 <TextBlock Text="Rooms online:" Style="{StaticResource TextBlock0}"/>
-                <ListView Name="ServersListView">
+                <ListView Name="ServersListView" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" FontSize="10">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Server Name" Width="150">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ThisServerName}"/>
+                                        <TextBlock Text="{Binding ThisServerName}" Foreground="White"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -50,7 +50,7 @@
                             <GridViewColumn Header="Player Number" Width="40">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBlock Text="{Binding ThisServerPlayerNumber}"/>
+                                        <TextBlock Text="{Binding ThisServerPlayerNumber}" Foreground="White"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

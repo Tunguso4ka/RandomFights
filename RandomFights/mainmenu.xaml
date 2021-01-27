@@ -42,16 +42,16 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <StackPanel Width="500">
-                    <TextBlock Text="Whats new:" Foreground="White"/>
-                    <TextBlock Text="-" Foreground="White" Name="WhatsNewNewTB"/>
+                    <TextBlock Text="Whats new:" Style="{StaticResource TextBlock0}"/>
+                    <TextBlock Text="-" Name="WhatsNewNewTB" Style="{StaticResource TextBlock0}"/>
                 </StackPanel>
                 <StackPanel>
-                    <TextBlock Text="" Foreground="White"/>
+                    <TextBlock Text=""/>
                 </StackPanel>
             </StackPanel>
         </Grid>
-        <Label Content="Random Fights" Margin="10,10,0,0" VerticalAlignment="Top" Height="150" Foreground="White" FontSize="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="RFText" HorizontalAlignment="Left" Width="620"/>
-        <TextBlock Text="Version: 0.7.2" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240"/>
+        <Label Content="Random Fights" Margin="10,10,0,0" VerticalAlignment="Top" Height="150" FontSize="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Name="RFText" HorizontalAlignment="Left" Width="620" Foreground="White"/>
+        <TextBlock Text="Version: 0.8" TextWrapping="Wrap" VerticalAlignment="Top" Name="VersionTB" Height="20" Margin="88,115,0,0" HorizontalAlignment="Left" Width="240" Style="{StaticResource TextBlock0}"/>
 
     </Grid>
 </Page>

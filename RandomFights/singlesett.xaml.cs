@@ -13,6 +13,8 @@ namespace RandomFights
         string[] Names = { "Sergey", "Kira", "Christina", "Elena", "Eva", "Katya", "Maria", "Maggie", "Penny", "Saya", "Princess", "Abby", "Laila", "Sadie", "Olivia", "Starlight", "Talla"};
         Random Rand = new Random();
 
+        single ASingleGameProcess;
+
         private void RandomName0Btn_Click(object sender, RoutedEventArgs e)
         {
             NameIndex = Rand.Next(Names.Length);
@@ -29,7 +31,8 @@ namespace RandomFights
         {
             if (saveIsReal == true)
             {
-                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                ASingleGameProcess = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                ((MainWindow)Window.GetWindow(this)).frame0.Content = ASingleGameProcess;
             }
         }
 
@@ -40,7 +43,8 @@ namespace RandomFights
             {
                 Name0 = Name0TB.Text;
                 Name1 = Name1TB.Text;
-                ((MainWindow)Window.GetWindow(this)).frame0.Content = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                ASingleGameProcess = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                ((MainWindow)Window.GetWindow(this)).frame0.Content = ASingleGameProcess;
             }
         }
 
@@ -56,10 +60,6 @@ namespace RandomFights
             {
                 loadSaveGameBtn.Visibility = Visibility.Hidden;
             }
-        }
-        private void homeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
         }
 
         void translation()

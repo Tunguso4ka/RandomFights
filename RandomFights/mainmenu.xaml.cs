@@ -27,6 +27,7 @@ namespace RandomFights
         OnlineFindRoomPage AOnlineFindRoomPage;
         settings SettingsPage;
         help HelpPage;
+        ControlModeSettingsPage AControlModeSettingsPage;
         public mainmenu(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
         {
             InitializeComponent();
@@ -60,6 +61,7 @@ namespace RandomFights
             AOnlineFindRoomPage = new OnlineFindRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
             SettingsPage = new settings(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
             HelpPage = new help(AppLanguage);
+            AControlModeSettingsPage = new ControlModeSettingsPage(saveIsReal, isBetaOn);
         }
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
@@ -88,7 +90,7 @@ namespace RandomFights
 
         private void singlebtn1_Click(object sender, RoutedEventArgs e)
         {
-            //((MainWindow)Window.GetWindow(this)).frame0.Content = new SingleGamePage();
+            ((MainWindow)Window.GetWindow(this)).frame0.Content = AControlModeSettingsPage;
         }
 
         private void SingleListBtn_Click(object sender, RoutedEventArgs e)
