@@ -56,6 +56,5 @@
                 <Button Content="Create"/>
             </StackPanel>
         </StackPanel>
-        <Button Content="Home" Grid.Column="2" Margin="0,5,5,0" Click="HomeBtn_Click" HorizontalAlignment="Right" Width="35" Height="35" VerticalAlignment="Top" Background="#303030" BorderThickness="0" Foreground="White"/>
     </Grid>
 </Page>

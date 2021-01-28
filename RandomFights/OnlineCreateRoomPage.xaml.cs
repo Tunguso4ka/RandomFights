@@ -43,10 +43,5 @@ namespace RandomFights
                 AprSpellsCheckBoxXPIncreaser.IsChecked = false;
             }
         }
-
-        private void HomeBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ((MainWindow)Window.GetWindow(this)).frame0.Content = new mainmenu(AppLanguage, SaveIsReal, isBetaOn, ScreenMode);
-        }
     }
 }

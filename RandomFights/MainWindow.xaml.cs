@@ -10,9 +10,9 @@ namespace RandomFights
     public partial class MainWindow : Window
     {
         string AppLanguage, UserLogin;
-        bool saveIsReal, isBetaOn, RFUIsConected, RFUIsLoged;
+        bool saveIsReal, isBetaOn, RFUIsConected, RFUIsLoged, ControlSaveIsReal;
         int ScreenMode;
-        string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat";
+        string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat",  ControlSavePath = Environment.CurrentDirectory + @"\controlsave.dat";
         mainmenu MainMenu;
 
         public MainWindow()
@@ -29,7 +29,7 @@ namespace RandomFights
                 ScreenMode = 2;
             }
             ScreenChange();
-            MainMenu = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
+            MainMenu = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ControlSaveIsReal);
             frame0.Content = MainMenu;
         }
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
@@ -59,6 +59,15 @@ namespace RandomFights
             else
             {
                 saveIsReal = false;
+            }
+
+            if (File.Exists(ControlSavePath))
+            {
+                ControlSaveIsReal = true;
+            }
+            else
+            {
+                ControlSaveIsReal = false;
             }
         }
 

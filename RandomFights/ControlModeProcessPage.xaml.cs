@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace RandomFights
         int Poisoning0, Poisoning1;
         int TimeSpeed = 1000, Second, Minute, TimeForTurn;
         int RandomResult;
+        string SavePath = Environment.CurrentDirectory + @"\controlsave.dat";
 
         Random Rndm = new Random();
 
@@ -81,6 +83,8 @@ namespace RandomFights
                             BorderPlayer11.BorderBrush = Brushes.Red;
                             TurnOfPlayer1();
                         }
+
+                        WriteSave();
                     }
 
                     //Time system
@@ -159,11 +163,15 @@ namespace RandomFights
                 {
                     //Grenade
                     HP1 -= 20;
+                    OutputTxtBx0.Text = Name0 + " throw grenade in " + Name1 + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx0.Text;
+                    OutputTxtBx1.Text = "\n" + OutputTxtBx1.Text;
                 }
                 else if (Spell0 == 1)
                 {
                     //Poison
                     Poisoning1 += 5;
+                    OutputTxtBx0.Text = Name0 + " poison" + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx0.Text;
+                    OutputTxtBx1.Text = "\n" + OutputTxtBx1.Text;
                 }
                 else if (Spell0 == 2)
                 {
@@ -176,16 +184,22 @@ namespace RandomFights
                 {
                     //Additional damage
                     AdditionalDamage0 += 5;
+                    OutputTxtBx0.Text = Name0 + " improve additional damage" + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx0.Text;
+                    OutputTxtBx1.Text = "\n" + OutputTxtBx1.Text;
                 }
                 else if (Spell0 == 4)
                 {
                     //Shield
                     Shield0 += 5;
+                    OutputTxtBx0.Text = Name0 + " improve shield HP" + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx0.Text;
+                    OutputTxtBx1.Text = "\n" + OutputTxtBx1.Text;
                 }
                 else if (Spell0 == 5)
                 {
                     //XP Power up
                     XP0 += 20;
+                    OutputTxtBx0.Text = Name0 + " get 20 XP" + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx0.Text;
+                    OutputTxtBx1.Text = "\n" + OutputTxtBx1.Text;
                 }
             }
             IsNextTurn = true;
@@ -207,14 +221,14 @@ namespace RandomFights
                 AdditionalDamage1 = 0;
                 Shield0 = 0;
 
-                OutputTxtBx1.Text = Name1 + " hit " + Name0 + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx1.Text;
+                OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " hit " + Name0 + ".\n" + OutputTxtBx1.Text;
                 OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
             }
             else if (RandomResult == 1)
             {
                 //Heal
                 HP1 += AddHP1;
-                OutputTxtBx1.Text = Name1 + " heal himself" + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx1.Text;
+                OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " heal himself" + ".\n" + OutputTxtBx1.Text;
                 OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
             }
             else
@@ -224,33 +238,43 @@ namespace RandomFights
                 {
                     //Grenade
                     HP0 -= 20;
+                    OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " throw grenade in " + Name0 + ".\n" + OutputTxtBx1.Text;
+                    OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 }
                 else if (Spell1 == 1)
                 {
                     //Poison
                     Poisoning0 += 5;
+                    OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " poison" + ".\n" + OutputTxtBx1.Text;
+                    OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 }
                 else if (Spell1 == 2)
                 {
                     //Super HP Regen
                     HP1 += (AddHP1 * 2);
-                    OutputTxtBx1.Text = Name1 + " heal himself" + " - " + MinuteTB.Text + ":" + SecondsTB.Text + ".\n" + OutputTxtBx1.Text;
+                    OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " heal himself" + ".\n" + OutputTxtBx1.Text;
                     OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 }
                 else if (Spell1 == 3)
                 {
                     //Additional damage
                     AdditionalDamage1 += 5;
+                    OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " improve additional damage" + ".\n" + OutputTxtBx1.Text;
+                    OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 }
                 else if (Spell1 == 4)
                 {
                     //Shield
                     Shield1 += 5;
+                    OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " improve shield HP" + ".\n" + OutputTxtBx1.Text;
+                    OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 }
                 else if (Spell1 == 5)
                 {
                     //XP Power up
                     XP1 += 20;
+                    OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " get 20 XP" + ".\n" + OutputTxtBx1.Text;
+                    OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 }
             }
             IsNextTurn = true;
@@ -276,12 +300,96 @@ namespace RandomFights
         //Saves System
         void ReadSave()
         {
+            BinaryReader SaveBinaryReader = new BinaryReader(File.OpenRead(SavePath));
+            //Name
+            Name0 = SaveBinaryReader.ReadString();
+            Name1 = SaveBinaryReader.ReadString();
 
+            //Spells
+            Spell0 = SaveBinaryReader.ReadInt32();
+            Spell1 = SaveBinaryReader.ReadInt32();
+
+            //Health
+            HP0 = SaveBinaryReader.ReadInt32();
+            HP1 = SaveBinaryReader.ReadInt32();
+            MaxHP0 = SaveBinaryReader.ReadInt32();
+            MaxHP1 = SaveBinaryReader.ReadInt32();
+            AddHP0 = SaveBinaryReader.ReadInt32();
+            AddHP1 = SaveBinaryReader.ReadInt32();
+
+            //Level
+            Lvl0 = SaveBinaryReader.ReadInt32();
+            Lvl1 = SaveBinaryReader.ReadInt32();
+            XP0 = SaveBinaryReader.ReadInt32();
+            XP1 = SaveBinaryReader.ReadInt32();
+
+            //Damage
+            Damage0 = SaveBinaryReader.ReadInt32();
+            Damage1 = SaveBinaryReader.ReadInt32();
+            AdditionalDamage0 = SaveBinaryReader.ReadInt32();
+            AdditionalDamage1 = SaveBinaryReader.ReadInt32();
+            Shield0 = SaveBinaryReader.ReadInt32();
+            Shield1 = SaveBinaryReader.ReadInt32();
+
+            //Special
+            Poisoning0 = SaveBinaryReader.ReadInt32();
+            Poisoning1 = SaveBinaryReader.ReadInt32();
+
+            //Time
+            Second = SaveBinaryReader.ReadInt32();
+            Minute = SaveBinaryReader.ReadInt32();
+
+            SaveBinaryReader.Dispose();
         }
 
         void WriteSave()
         {
+            if(File.Exists(SavePath))
+            {
+                File.Delete(SavePath);
+            }
 
+            BinaryWriter SaveBinaryWriter = new BinaryWriter(File.Open(SavePath, FileMode.Create));
+
+            //Name
+            SaveBinaryWriter.Write(Name0);
+            SaveBinaryWriter.Write(Name1);
+
+            //Spells
+            SaveBinaryWriter.Write(Spell0);
+            SaveBinaryWriter.Write(Spell1);
+
+            //Health
+            SaveBinaryWriter.Write(HP0);
+            SaveBinaryWriter.Write(HP1);
+            SaveBinaryWriter.Write(MaxHP0);
+            SaveBinaryWriter.Write(MaxHP1);
+            SaveBinaryWriter.Write(AddHP0);
+            SaveBinaryWriter.Write(AddHP1);
+
+            //Level
+            SaveBinaryWriter.Write(Lvl0);
+            SaveBinaryWriter.Write(Lvl1);
+            SaveBinaryWriter.Write(XP0);
+            SaveBinaryWriter.Write(XP1);
+
+            //Damage
+            SaveBinaryWriter.Write(Damage0);
+            SaveBinaryWriter.Write(Damage1);
+            SaveBinaryWriter.Write(AdditionalDamage0);
+            SaveBinaryWriter.Write(AdditionalDamage1);
+            SaveBinaryWriter.Write(Shield0);
+            SaveBinaryWriter.Write(Shield1);
+
+            //Special
+            SaveBinaryWriter.Write(Poisoning0);
+            SaveBinaryWriter.Write(Poisoning1);
+
+            //Time
+            SaveBinaryWriter.Write(Second);
+            SaveBinaryWriter.Write(Minute);
+
+            SaveBinaryWriter.Dispose();
         }
 
         //Parameters
@@ -431,12 +539,26 @@ namespace RandomFights
                 HP1 = MaxHP1;
             }
 
-            if (HP0 < 0)
+            if (HP0 <= 0)
             {
+                if (File.Exists(SavePath))
+                {
+                    File.Delete(SavePath);
+                }
+
+                OutputTxtBx1.Text = MinuteTB.Text + ":" + SecondsTB.Text + " - " + Name1 + " win!\n" + OutputTxtBx1.Text;
+                OutputTxtBx0.Text = "\n" + OutputTxtBx0.Text;
                 IsEnd = true;
             }
-            if (HP1 < 0)
+            if (HP1 <= 0)
             {
+                if (File.Exists(SavePath))
+                {
+                    File.Delete(SavePath);
+                }
+
+                OutputTxtBx0.Text = Name1 + " win!" + MinuteTB.Text + ":" + SecondsTB.Text + " - " + "\n" + OutputTxtBx0.Text;
+                OutputTxtBx1.Text = "\n" + OutputTxtBx1.Text;
                 IsEnd = true;
             }
         }

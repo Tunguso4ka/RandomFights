@@ -19,7 +19,7 @@ namespace RandomFights
     public partial class mainmenu : Page
     {
         string AppLanguage;
-        bool saveIsReal, isBetaOn, SingleListVisible, OnlineListVisible;
+        bool saveIsReal, isBetaOn, SingleListVisible, OnlineListVisible, ControlSaveIsReal;
         int ScreenMode;
 
         singlesett SingleGameSettings;
@@ -28,14 +28,15 @@ namespace RandomFights
         settings SettingsPage;
         help HelpPage;
         ControlModeSettingsPage AControlModeSettingsPage;
-        public mainmenu(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
+        public mainmenu(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode, bool controlSaveIsReal)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
             isBetaOn = IsBetaOn;
             ScreenMode = screenMode;
-            if(IsBetaOn == true)
+            ControlSaveIsReal = controlSaveIsReal;
+            if (IsBetaOn == true)
             {
                 OnlineListBtn.Visibility = Visibility.Visible;
             }
@@ -48,7 +49,7 @@ namespace RandomFights
             singlebtn.Visibility = Visibility.Hidden;
             singlebtn1.Visibility = Visibility.Hidden;
 
-            WhatsNewNewTB.Text = "///";
+            WhatsNewNewTB.Text = "-New control mode\n-New UI";
 
             translate();
             Pages();
@@ -61,7 +62,7 @@ namespace RandomFights
             AOnlineFindRoomPage = new OnlineFindRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
             SettingsPage = new settings(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
             HelpPage = new help(AppLanguage);
-            AControlModeSettingsPage = new ControlModeSettingsPage(saveIsReal, isBetaOn);
+            AControlModeSettingsPage = new ControlModeSettingsPage(ControlSaveIsReal, isBetaOn);
         }
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
