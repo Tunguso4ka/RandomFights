@@ -13,7 +13,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1" Background="#303030">
+        <Grid Grid.Row="1" Background="#303030" Name="FirstGrid" Margin="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="150"/>
@@ -42,7 +42,6 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="2">
                 <StackPanel Width="500">
-                    <TextBlock Text="Whats new:" Style="{StaticResource TextBlock0}"/>
                     <TextBlock Text="-" Name="WhatsNewNewTB" Style="{StaticResource TextBlock0}"/>
                 </StackPanel>
                 <StackPanel>

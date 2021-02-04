@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.IO;
+using System.Windows.Media;
 
 namespace RandomFights
 {
@@ -11,7 +12,7 @@ namespace RandomFights
     {
         string AppLanguage, UserLogin;
         bool saveIsReal, isBetaOn, RFUIsConected, RFUIsLoged, ControlSaveIsReal;
-        int ScreenMode;
+        int ScreenMode, ThemeNum;
         string gameSavePath = Environment.CurrentDirectory + "/gameSave.dat", settPath = Environment.CurrentDirectory + "/settings.dat",  ControlSavePath = Environment.CurrentDirectory + @"\controlsave.dat";
         mainmenu MainMenu;
 
@@ -29,7 +30,8 @@ namespace RandomFights
                 ScreenMode = 2;
             }
             ScreenChange();
-            MainMenu = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ControlSaveIsReal);
+            ThemeChange();
+            MainMenu = new mainmenu(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ControlSaveIsReal, ThemeNum);
             frame0.Content = MainMenu;
         }
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
@@ -45,6 +47,14 @@ namespace RandomFights
                 AppLanguage = BinaryReader.ReadString();
                 isBetaOn = BinaryReader.ReadBoolean();
                 ScreenMode = BinaryReader.ReadInt32();
+                try
+                {
+                    ThemeNum = BinaryReader.ReadInt32();
+                }
+                catch
+                {
+                    ThemeNum = 0;
+                }
                 BinaryReader.Dispose();
             }
             else
@@ -95,6 +105,15 @@ namespace RandomFights
                 WindowStyle = WindowStyle.SingleBorderWindow;
                 ResizeMode = ResizeMode.CanResize;
                 Topmost = false;
+            }
+        }
+
+        void ThemeChange()
+        {
+            if (ThemeNum == 1)
+            {
+                ThatWindow.Background = new SolidColorBrush(Color.FromRgb(233, 235, 255));
+                HomeBtn.Style = (Style)FindResource("ButtonLightTheme");
             }
         }
     }

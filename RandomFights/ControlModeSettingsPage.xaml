@@ -11,13 +11,13 @@
     <Grid>
         <StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Start from save:" Style="{StaticResource TextBlock0}" Height="30"/>
+                <TextBlock Text="Start from save:" Name="StartFromSaveTxtBlck" Style="{StaticResource TextBlock0}" Height="30"/>
                 <Separator Margin="5,0"/>
                 <Button Content="OK" Height="30" Width="30" Name="StartFromSaveBtn" Click="StartFromSaveBtn_Click"/>
             </StackPanel>
             <Separator Margin="0,5"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Choose names:" Style="{StaticResource TextBlock0}" Height="30"/>
+                <TextBlock Text="Choose names:" Name="ChooseNamesTxtBlck" Style="{StaticResource TextBlock0}" Height="30"/>
                 <Separator Margin="5,0"/>
                 <TextBox Width="90" Height="20" Name="NameTxtBx0"/>
                 <Button Width="20" Height="20" Content="↻" Name="RandomNameBtn0" Click="RandomNameBtn0_Click"/>
@@ -27,7 +27,7 @@
             </StackPanel>
             <Separator Margin="0,5"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Choose spells:" Style="{StaticResource TextBlock0}" Height="30"/>
+                <TextBlock Text="Choose spells:" Name="ChooseSpellsTxtBlck" Style="{StaticResource TextBlock0}" Height="30"/>
                 <Separator Margin="5,0"/>
                 <StackPanel>
                     <RadioButton Content="Grenade" Name="SpellRdBtn00"/>

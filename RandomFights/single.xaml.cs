@@ -409,6 +409,15 @@ namespace RandomFights
                 }
             }
 
+            else if (CCSM[0] == "Cake" || CCSM[0] == "cake")
+            {
+                CheatCodeText.Text = "Cake is a lie! " + CheatCodeText.Text;
+                Name0 = "Party Escort Bot";
+                Name0TB.Text = Name0;
+                Name1 = "Chell";
+                Name1TB.Text = Name1;
+            }
+
             else
             {
                 CheatCodeText.Text = "Command " + CCSM[0] + " not found " + "\n" + CheatCodeText.Text;

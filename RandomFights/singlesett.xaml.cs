@@ -7,7 +7,7 @@ namespace RandomFights
     public partial class singlesett : Page
     {
         string AppLanguage, Name0, Name1;
-        int rb0Result, rb1Result, ScreenMode;
+        int rb0Result, rb1Result, ScreenMode, ThemeNum;
         int NameIndex;
         bool saveIsReal, rb0Checked = false, rb1Checked = false, isBetaOn;
         string[] Names = { "Sergey", "Kira", "Christina", "Elena", "Eva", "Katya", "Maria", "Maggie", "Penny", "Saya", "Princess", "Abby", "Laila", "Sadie", "Olivia", "Starlight", "Talla"};
@@ -48,14 +48,16 @@ namespace RandomFights
             }
         }
 
-        public singlesett(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
+        public singlesett(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode, int themeNum)
         {
             InitializeComponent();
             saveIsReal = SaveIsReal;
             isBetaOn = IsBetaOn;
             AppLanguage = appLanguage;
             ScreenMode = screenMode;
+            ThemeNum = themeNum;
             translation();
+            ThemeChange();
             if (saveIsReal == false)
             {
                 loadSaveGameBtn.Visibility = Visibility.Hidden;
@@ -166,6 +168,36 @@ namespace RandomFights
             {
                 rb1Result = 5;
                 rb1Checked = true;
+            }
+        }
+
+        void ThemeChange()
+        {
+            if (ThemeNum == 1)
+            {
+                //.Style = (Style)FindResource("ButtonLightTheme");
+                nextBtn.Style = (Style)FindResource("ButtonLightTheme");
+                loadSaveGameBtn.Style = (Style)FindResource("ButtonLightTheme");
+                RandomNameBtn0.Style = (Style)FindResource("ButtonLightTheme");
+                RandomNameBtn1.Style = (Style)FindResource("ButtonLightTheme");
+
+                nameText.Style = (Style)FindResource("TextLightTheme");
+                spellText.Style = (Style)FindResource("TextLightTheme");
+                loadSaveGameText.Style = (Style)FindResource("TextLightTheme");
+
+                rb00.Style = (Style)FindResource("RdBtnLightTheme");
+                rb01.Style = (Style)FindResource("RdBtnLightTheme");
+                rb02.Style = (Style)FindResource("RdBtnLightTheme");
+                rb03.Style = (Style)FindResource("RdBtnLightTheme");
+                rb04.Style = (Style)FindResource("RdBtnLightTheme");
+                rb05.Style = (Style)FindResource("RdBtnLightTheme");
+
+                rb10.Style = (Style)FindResource("RdBtnLightTheme");
+                rb11.Style = (Style)FindResource("RdBtnLightTheme");
+                rb12.Style = (Style)FindResource("RdBtnLightTheme");
+                rb13.Style = (Style)FindResource("RdBtnLightTheme");
+                rb14.Style = (Style)FindResource("RdBtnLightTheme");
+                rb15.Style = (Style)FindResource("RdBtnLightTheme");
             }
         }
     }

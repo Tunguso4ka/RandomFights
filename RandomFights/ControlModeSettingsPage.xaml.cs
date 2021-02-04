@@ -11,16 +11,18 @@ namespace RandomFights
     {
         bool StartFromSave, SaveIsReal, IsBetaOn, InputIsChecked;
         string Name0, Name1;
-        int SpellNum0, SpellNum1;
+        int SpellNum0, SpellNum1, ThemeNum;
         string[] Names = { "Sergey", "Kira", "Christina", "Elena", "Eva", "Katya", "Maria", "Maggie", "Penny", "Saya", "Princess", "Abby", "Laila", "Sadie", "Olivia", "Starlight", "Talla" };
         Random Rand = new Random();
         ControlModeProcessPage AControlModeProcessPage;
 
-        public ControlModeSettingsPage(bool saveIsReal, bool isBetaOn)
+        public ControlModeSettingsPage(bool saveIsReal, bool isBetaOn, int themeNum)
         {
             InitializeComponent();
             SaveIsReal = saveIsReal;
             IsBetaOn = isBetaOn;
+            ThemeNum = themeNum;
+            ThemeChange();
         }
 
         void InputCheck()
@@ -129,6 +131,36 @@ namespace RandomFights
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
             InputCheck();
+        }
+
+        void ThemeChange()
+        {
+            if(ThemeNum == 1)
+            {
+                //.Style = (Style)FindResource("ButtonLightTheme");
+                NextBtn.Style = (Style)FindResource("ButtonLightTheme");
+                StartFromSaveBtn.Style = (Style)FindResource("ButtonLightTheme");
+                RandomNameBtn0.Style = (Style)FindResource("ButtonLightTheme");
+                RandomNameBtn1.Style = (Style)FindResource("ButtonLightTheme");
+
+                ChooseNamesTxtBlck.Style = (Style)FindResource("TextLightTheme");
+                ChooseSpellsTxtBlck.Style = (Style)FindResource("TextLightTheme");
+                StartFromSaveTxtBlck.Style = (Style)FindResource("TextLightTheme");
+
+                SpellRdBtn00.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn01.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn02.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn03.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn04.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn05.Style = (Style)FindResource("RdBtnLightTheme");
+
+                SpellRdBtn10.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn11.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn12.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn13.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn14.Style = (Style)FindResource("RdBtnLightTheme");
+                SpellRdBtn15.Style = (Style)FindResource("RdBtnLightTheme");
+            }
         }
     }
 }

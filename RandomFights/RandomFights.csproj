@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Version>0.8</Version>
+    <Version>0.8.0.1</Version>
     <Authors>Kira Kosova</Authors>
     <Company>GameChan</Company>
     <NeutralLanguage>en-US</NeutralLanguage>
@@ -12,12 +12,12 @@
     <AssemblyOriginatorKeyFile>RFPASSKEYFILE.pfx</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <StartupObject>RandomFights.App</StartupObject>
-    <ApplicationIcon>img\randomfightslogo.ico</ApplicationIcon>
-    <AssemblyVersion>0.8.0.0</AssemblyVersion>
+    <ApplicationIcon>favicon (5).ico</ApplicationIcon>
+    <AssemblyVersion>0.8.0.1</AssemblyVersion>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <NoWin32Manifest>true</NoWin32Manifest>
     <PackageProjectUrl>https://github.com/Tunguso4ka/RandomFights</PackageProjectUrl>
-    <FileVersion>0.8.0.0</FileVersion>
+    <FileVersion>0.8.0.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

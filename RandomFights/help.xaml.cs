@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace RandomFights
 {
@@ -9,10 +10,14 @@ namespace RandomFights
     public partial class help : Page
     {
         string AppLanguage;
-        public help(string appLanguage)
+        public help(string appLanguage, int ThemeNum)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
+            if(ThemeNum == 1)
+            {
+                TB.Foreground = Brushes.Black;
+            }
             setText();
         }
 

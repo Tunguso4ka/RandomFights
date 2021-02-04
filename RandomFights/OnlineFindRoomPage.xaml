@@ -33,7 +33,7 @@
                 </StackPanel>
                 <Button Content="Search" Name="SearchStartBtn" Click="SearchStartBtn_Click"/>
             </StackPanel>
-            <StackPanel Margin="5" MinWidth="500">
+            <StackPanel Margin="5" Width="auto">
                 <!--Room List-->
                 <TextBlock Text="Rooms online:" Style="{StaticResource TextBlock0}"/>
                 <ListView Name="ServersListView" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" FontSize="10">

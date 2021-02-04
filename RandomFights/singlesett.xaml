@@ -18,10 +18,10 @@
             <TextBlock HorizontalAlignment="Left" Text="Names:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="nameText" Height="16" Width="50"/>
             <StackPanel Orientation="Horizontal">
                 <TextBox HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Name="Name0TB"/>
-                <Button Content="↻" Width="30" Click="RandomName0Btn_Click"/>
+                <Button Content="↻" Width="30" Name="RandomNameBtn0" Click="RandomName0Btn_Click"/>
                 <Separator Margin="5,0"/>
                 <TextBox HorizontalAlignment="Left" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="18" Name="Name1TB"/>
-                <Button Content="↻" Width="30" Click="RandomName1Btn_Click"/>
+                <Button Content="↻" Width="30" Name="RandomNameBtn1" Click="RandomName1Btn_Click"/>
             </StackPanel>
             <Separator Margin="0,5"/>
             <TextBlock HorizontalAlignment="Left" Text="Spells:" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Name="spellText" Height="16" Width="230"/>

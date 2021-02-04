@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandomFights"
         mc:Ignorable="d"
-        Icon="C:\csproj\RandomFights\RandomFights\img\randomfightslogo.ico"
         Background="#333333"
+        Name="ThatWindow"
+        WindowStartupLocation="CenterScreen"
         Title="Random Fights" Height="720" Width="1280">
     <Grid>
         <Frame Content="Frame" Name="frame0" NavigationUIVisibility="Hidden" Margin="5,5,5,5"/>

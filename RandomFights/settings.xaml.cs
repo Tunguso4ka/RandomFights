@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace RandomFights
 {
@@ -12,15 +13,16 @@ namespace RandomFights
     {
         string AppLanguage;
         bool saveIsReal, deleteSave = false, isBetaOn;
-        int ScreenMode;
+        int ScreenMode, ThemeNum;
         string settPath = Environment.CurrentDirectory + "/settings.dat", savePath = Environment.CurrentDirectory + "/gameSave.dat";
-        public settings(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode)
+        public settings(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode, int themeNum)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
             saveIsReal = SaveIsReal;
             isBetaOn = IsBetaOn;
             ScreenMode = screenMode;
+            ThemeNum = themeNum;
             try
             {
                 if(AppLanguage == "ru")
@@ -53,12 +55,21 @@ namespace RandomFights
                 {
                     RB4.IsChecked = true;
                 }
+                if (ThemeNum == 0)
+                {
+                    RB5.IsChecked = true;
+                }
+                else
+                {
+                    RB6.IsChecked = true;
+                }
             }
             catch
             {
 
             }
             translate();
+            ThemeChange();
         }
 
         private void saveBtn_Click(object sender, RoutedEventArgs e)
@@ -125,10 +136,19 @@ namespace RandomFights
             {
                 ScreenMode = 2;
             }
+            if (RB6.IsChecked == true)
+            {
+                ThemeNum = 1;
+            }
+            else
+            {
+                ThemeNum = 0;
+            }
 
             binaryWriter.Write(AppLanguage);
             binaryWriter.Write(isBetaOn);
             binaryWriter.Write(ScreenMode);
+            binaryWriter.Write(ThemeNum);
             binaryWriter.Dispose();
 
             if(deleteSave == true)
@@ -161,6 +181,16 @@ namespace RandomFights
                 RB2.Content = "Полноэкранный";
                 RB3.Content = "Безграничный";
                 RB4.Content = "Оконный";
+            }
+        }
+
+        void ThemeChange()
+        {
+            if(ThemeNum == 1)
+            {
+                SaveBtn.Style = (Style)FindResource("ButtonLightTheme");
+                SaveAndRestartBtn.Style = (Style)FindResource("ButtonLightTheme");
+                ThisGrid.Background = new SolidColorBrush(Color.FromRgb(211, 215, 255));
             }
         }
     }

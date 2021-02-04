@@ -20,7 +20,7 @@ namespace RandomFights
     {
         string AppLanguage;
         bool saveIsReal, isBetaOn, SingleListVisible, OnlineListVisible, ControlSaveIsReal;
-        int ScreenMode;
+        int ScreenMode, ThemeNum;
 
         singlesett SingleGameSettings;
         OnlineCreateRoomPage AOnlineCreateRoomPage;
@@ -28,7 +28,7 @@ namespace RandomFights
         settings SettingsPage;
         help HelpPage;
         ControlModeSettingsPage AControlModeSettingsPage;
-        public mainmenu(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode, bool controlSaveIsReal)
+        public mainmenu(string appLanguage, bool SaveIsReal, bool IsBetaOn, int screenMode, bool controlSaveIsReal, int themeNum)
         {
             InitializeComponent();
             AppLanguage = appLanguage;
@@ -36,6 +36,7 @@ namespace RandomFights
             isBetaOn = IsBetaOn;
             ScreenMode = screenMode;
             ControlSaveIsReal = controlSaveIsReal;
+            ThemeNum = themeNum;
             if (IsBetaOn == true)
             {
                 OnlineListBtn.Visibility = Visibility.Visible;
@@ -52,17 +53,18 @@ namespace RandomFights
             WhatsNewNewTB.Text = "-New control mode\n-New UI";
 
             translate();
+            ThemeGhange();
             Pages();
         }
 
         void Pages()
         {
-            SingleGameSettings = new singlesett(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-            AOnlineCreateRoomPage = new OnlineCreateRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-            AOnlineFindRoomPage = new OnlineFindRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-            SettingsPage = new settings(AppLanguage, saveIsReal, isBetaOn, ScreenMode);
-            HelpPage = new help(AppLanguage);
-            AControlModeSettingsPage = new ControlModeSettingsPage(ControlSaveIsReal, isBetaOn);
+            SingleGameSettings = new singlesett(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ThemeNum);
+            //AOnlineCreateRoomPage = new OnlineCreateRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ThemeNum);
+            //AOnlineFindRoomPage = new OnlineFindRoomPage(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ThemeNum);
+            SettingsPage = new settings(AppLanguage, saveIsReal, isBetaOn, ScreenMode, ThemeNum);
+            HelpPage = new help(AppLanguage, ThemeNum);
+            AControlModeSettingsPage = new ControlModeSettingsPage(ControlSaveIsReal, isBetaOn, ThemeNum);
         }
 
         private void singlebtn_Click(object sender, RoutedEventArgs e)
@@ -105,10 +107,7 @@ namespace RandomFights
             else
             {
                 singlebtn.Visibility = Visibility.Visible;
-                if(isBetaOn == true)
-                {
-                    singlebtn1.Visibility = Visibility.Visible;
-                }
+                singlebtn1.Visibility = Visibility.Visible;
                 if (OnlineListVisible == true)
                 {
                     onlinebtn.Visibility = Visibility.Hidden;
@@ -179,6 +178,29 @@ namespace RandomFights
             {
                 VersionTB.Text = VersionTB.Text + " BETA";
                 VersionTB.Foreground = Brushes.DarkRed;
+            }
+        }
+
+        void ThemeGhange()
+        {
+            if(ThemeNum == 1)
+            {
+                FirstGrid.Background = new SolidColorBrush(Color.FromRgb(218, 221, 255));
+                SingleListBtn.Style = (Style)FindResource("ButtonLightTheme");
+                OnlineListBtn.Style = (Style)FindResource("ButtonLightTheme");
+                settingsbtn.Style = (Style)FindResource("ButtonLightTheme");
+                helpbtn.Style = (Style)FindResource("ButtonLightTheme");
+                exitbtn.Style = (Style)FindResource("ButtonLightTheme");
+                singlebtn.Style = (Style)FindResource("ButtonLightTheme");
+                singlebtn1.Style = (Style)FindResource("ButtonLightTheme");
+                onlinebtn.Style = (Style)FindResource("ButtonLightTheme");
+                onlinebtn1.Style = (Style)FindResource("ButtonLightTheme");
+                RFText.Foreground = Brushes.Black;
+                if(isBetaOn == false)
+                {
+                    VersionTB.Foreground = Brushes.Black;
+                }
+                WhatsNewNewTB.Style = (Style)FindResource("TextLightTheme");
             }
         }
     }
