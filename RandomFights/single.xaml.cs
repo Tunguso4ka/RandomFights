@@ -9,7 +9,7 @@ namespace RandomFights
 {
     public partial class single : Page
     {
-        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned, ConsoleIsTapped;
+        bool gameIsPaused = false, gameIsSkiped = false, saveIsReal, isBetaOn, playerIsDead = false, player0IsPoisoned, player1IsPoisoned, ConsoleIsTapped, StartFromSave;
         string AppLanguage, Name0, Name1, time;
         int timeSpeed = 1000, ScreenMode;
         string SavePath = Environment.CurrentDirectory + @"\gameSave.dat";
@@ -481,7 +481,7 @@ namespace RandomFights
             }
         }
 
-        public single(string appLanguage, string name0, string name1, bool SaveIsReal, int rb0Result, int rb1Result, bool IsBetaOn, int screenMode)
+        public single(string appLanguage, string name0, string name1, bool SaveIsReal, int rb0Result, int rb1Result, bool IsBetaOn, int screenMode, bool startFromSave)
         {
             InitializeComponent();
             Name0 = name0;
@@ -492,7 +492,8 @@ namespace RandomFights
             Spell0 = rb0Result;
             Spell1 = rb1Result;
             ScreenMode = screenMode;
-            if (saveIsReal == true)
+            StartFromSave = startFromSave;
+            if (StartFromSave == true && SaveIsReal == true)
             {
                 ArrIntoInt();
             }

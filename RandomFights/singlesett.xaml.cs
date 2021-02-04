@@ -9,7 +9,7 @@ namespace RandomFights
         string AppLanguage, Name0, Name1;
         int rb0Result, rb1Result, ScreenMode, ThemeNum;
         int NameIndex;
-        bool saveIsReal, rb0Checked = false, rb1Checked = false, isBetaOn;
+        bool saveIsReal, rb0Checked = false, rb1Checked = false, isBetaOn, StartFromSave;
         string[] Names = { "Sergey", "Kira", "Christina", "Elena", "Eva", "Katya", "Maria", "Maggie", "Penny", "Saya", "Princess", "Abby", "Laila", "Sadie", "Olivia", "Starlight", "Talla"};
         Random Rand = new Random();
 
@@ -31,7 +31,8 @@ namespace RandomFights
         {
             if (saveIsReal == true)
             {
-                ASingleGameProcess = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                StartFromSave = true;
+                ASingleGameProcess = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode, StartFromSave);
                 ((MainWindow)Window.GetWindow(this)).frame0.Content = ASingleGameProcess;
             }
         }
@@ -43,7 +44,8 @@ namespace RandomFights
             {
                 Name0 = Name0TB.Text;
                 Name1 = Name1TB.Text;
-                ASingleGameProcess = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode);
+                StartFromSave = false;
+                ASingleGameProcess = new single(AppLanguage, Name0, Name1, saveIsReal, rb0Result, rb1Result, isBetaOn, ScreenMode, StartFromSave);
                 ((MainWindow)Window.GetWindow(this)).frame0.Content = ASingleGameProcess;
             }
         }
